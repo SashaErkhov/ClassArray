@@ -1,6 +1,8 @@
 #pragma once
+#ifndef ARRAY_OUR_WORK
+#define ARRAY_OUR_WORK
 
-Class Arry{
+class Arry{
 	unsigned char* m_bytes;
 public:
 	Arry(size_t size);
@@ -9,7 +11,7 @@ public:
 	unsigned char getElement(size_t pos);
 	void setElement(size_t pos, unsigned char value);
 	void resize(size_t new_size);
-	~Arry() {
-		delete m_bytes;
-	}
+	~Arry();
 };
+
+#endif // !ARRAY_OUR_WORK
