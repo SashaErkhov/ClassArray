@@ -1,5 +1,5 @@
 # ClassArray
-Никита - set/n
-Саша - get/n
-Иван - resize/n
+Никита - set  
+Саша - get  
+Иван - resize  
 Женя - оставшееся)
