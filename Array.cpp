@@ -22,7 +22,7 @@ void Arry::addElement(unsigned char elem) {
  	Its check size and if out size <
   	than count of element do resize 
    	for size+1*/
-    if (countElement + 2 > size) {
+    if (countElement + 1 > size) {
         resize(size + 1);
     }
     m_bytes[countElement] = elem;
