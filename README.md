@@ -2,4 +2,4 @@
 Никита - set  
 Саша - get и ~ check! 🤘  
 Иван - resize  :)  
-Женя - оставшееся)
+Женя : add, remove and 2 constructors - DONE.
