@@ -18,15 +18,14 @@ Arry::~Arry()
 
 
 void Arry::addElement(unsigned char elem) {
-	/*This function add new element. 
- 	Its check size and if out size <
-  	than count of element do resize 
-   	for size+1*/
-    if (countElement + 1 > size) {
-        resize(size + 1);
-    }
-    m_bytes[countElement] = elem;
-    countElement++;
+	Arry tmp(size + 1);
+	for (int i = 0; i < size; ++i)
+	{
+		tmp.setElement(i, (*this).getElement(i));
+	}
+	tmp.m_bytes[size] = elem;
+	std::swap(m_bytes, tmp.m_bytes);
+	++size;
 }
 
 void Arry::removeElement(size_t pos) {
