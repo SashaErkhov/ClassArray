@@ -10,6 +10,10 @@ unsigned char Arry::getElement(size_t pos)
 	return m_bytes[pos];
 }
 
+void setElement(size_t pos, unsigned char value){
+	m_bytes[pos]=value;
+}
+
 void Arry::resize(size_t new_size){
 	unsigned char* new_m_bytes=new unsigned char[new_size];
 	size_t old_size=((size_t(getElement(3))))|((size_t(getElement(4)))<<8)|((size_t(getElement(5)))<<16)((size_t(getElement(6)))<<24);
