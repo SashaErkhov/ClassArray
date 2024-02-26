@@ -1,8 +1,4 @@
 #include "Arry.h"
-Arry::Arry(){
-	/*standart constructor without size*/
-    m_bytes = new unsigned char[1];
-}
 
 
 Arry::Arry(size_t size) {
