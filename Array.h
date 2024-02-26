@@ -7,8 +7,7 @@ class Arry{
 	size_t size = 1;
 	size_t countElement = 0;
 public:
-   	Arry();
-	Arry(size_t size);
+	Arry(size_t size=1);
 	void addElement(unsigned char elem);
 	void removeElement(size_t pos);
 	unsigned char getElement(size_t pos);
