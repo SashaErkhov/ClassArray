@@ -53,7 +53,12 @@ unsigned char Arry::getElement(size_t pos)
 void Arry::setElement(size_t pos, unsigned char value){
     /*This function change element on pos
     and set it on value*/
+	if (pos>size-1){
+		std::cout<<"position is out of range"<<std::endl;
+	}
+	else{
 	m_bytes[pos]=value;
+	}
 }
 
 void Arry::resize(size_t new_size){
