@@ -42,7 +42,14 @@ public:
 		/*You can get element from array */
 		return m_bytes[pos];
 	}
-	void setElement(size_t pos, T value);
+	void setElement(size_t pos, T value){
+		if (pos>size-1){
+			std::cout<<"position is out of range"<<std::endl;
+		}
+		else{
+		m_bytes[pos]=value;
+		}
+	}
 	void resize(size_t new_size){
 		/*this resize function do new_size 
     	for array*/
