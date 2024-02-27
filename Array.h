@@ -2,18 +2,25 @@
 #ifndef ARRAY_OUR_WORK
 #define ARRAY_OUR_WORK
 
-class Arry{
-	unsigned char* m_bytes;
+template <typename T> class Arry{
+	T* m_bytes;
 	size_t size = 1;
 	size_t countElement = 0;
 public:
-	Arry(size_t size=1);
-	void addElement(unsigned char elem);
+	Arry(size_t size = 1);
+	void addElement(T elem);
 	void removeElement(size_t pos);
-	unsigned char getElement(size_t pos);
-	void setElement(size_t pos, unsigned char value);
+	T getElement(size_t pos)
+	{
+		/*You can get element from array */
+		return m_bytes[pos];
+	}
+	void setElement(size_t pos, T value);
 	void resize(size_t new_size);
-	~Arry();
+	~Arry()
+	{
+		delete[] m_bytes;
+	}
 };
 
 #endif // !ARRAY_OUR_WORK
