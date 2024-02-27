@@ -1,4 +1,4 @@
-#include "Arry.h"
+#include "Array.h"
 
 
 Arry::Arry(size_t size) {
