@@ -39,7 +39,27 @@ public:
 
 	T getElement(size_t pos);
 	void setElement(size_t pos, T value);
-	void resize(size_t new_size);
+	void resize(size_t new_size){
+		/*this resize function do new_size 
+    	for array*/
+		T* new_m_bytes=new T[new_size];
+		size_t old_size = size;
+		if (old_size>=new_size){
+			for(size_t i=0; i<new_size; ++i){
+				new_m_bytes[i]=m_bytes[i];
+			}
+		} else {
+			for(size_t i=0; i<old_size; ++i){
+				new_m_bytes[i]=m_bytes[i];
+			}
+			for(size_t i=old_size; i < new_size; ++i){
+				new_m_bytes[i]=0;
+			}
+		}
+		delete[] m_bytes;
+		m_bytes=new_m_bytes;
+		size = new_size;
+	}
 	~Arry();
 };
 
