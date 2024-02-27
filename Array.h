@@ -37,7 +37,11 @@ public:
 	    countElement--;
 	}
 
-	T getElement(size_t pos);
+	T getElement(size_t pos)
+	{
+		/*You can get element from array */
+		return m_bytes[pos];
+	}
 	void setElement(size_t pos, T value);
 	void resize(size_t new_size){
 		/*this resize function do new_size 
@@ -60,7 +64,10 @@ public:
 		m_bytes=new_m_bytes;
 		size = new_size;
 	}
-	~Arry();
+	~Arry()
+	{
+		delete[] m_bytes;
+	}
 };
 
 #endif // !ARRAY_OUR_WORK
