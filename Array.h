@@ -1,13 +1,14 @@
 #pragma once
 #ifndef ARRAY_OUR_WORK
 #define ARRAY_OUR_WORK
+#include <iostream>
 
 template <typename T> class Arry{
 	T* m_bytes;
 	size_t size = 1;
 	size_t countElement = 0;
 public:
-	Arry(size_t size) {
+	Arry(size_t size=1) {
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
 	}
