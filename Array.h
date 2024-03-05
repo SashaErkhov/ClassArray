@@ -12,6 +12,7 @@ public:
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
 	}
+	size_t getSize() const{ return size; }
 	void addElement(T elem) {
 	/*This function add new element. 
  	Its check size and if out size <
