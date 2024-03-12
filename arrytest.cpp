@@ -1,4 +1,4 @@
-#include "Array.h"
+#include "Arry.h"
 #include <iostream>
 void testsGetElements(){
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <gtest/gtest.h>
-#include "Array.h"
+#include "Arry.h"
 
 TEST(Arry, DefaultConstructor) {
     Arry<int> a;
