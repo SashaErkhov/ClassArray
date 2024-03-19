@@ -12,7 +12,12 @@ public:
     void rewindCaret();
     bool isCaretAtEnd();
     T getElement();
-    void moveToNextPos();
+	void moveToNextPos(){
+		if (isCaretAtEnd){
+			throw std::out_of_range("Next pos is not in array")
+		}
+		caret++;
+	}
 	Arry(size_t size=1) {
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
