@@ -86,4 +86,9 @@ public:
 	T& operator[](size_t pos) {return m_bytes[pos];}
 };
 
+template<typename T>
+void Arry<T>::rewindCaret() {
+    caret = 0;
+}
+
 #endif // !ARRAY_OUR_WORK
