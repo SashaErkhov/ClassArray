@@ -1,17 +1,17 @@
 #include <gtest/gtest.h>
 #include "List.h"
 
-TEST(ListTest, DefaultConstructor) {
+TEST(ListTest, DefaultConstructorList) {
     List<int> a;
     EXPECT_EQ(0, a.getSize());
 }
-TEST(ListTest, AddElement) {
+TEST(ListTest, AddElementList) {
     List<int> intList;
     intList.addElement(5);
     EXPECT_EQ(1, intList.getSize());
     EXPECT_EQ(5, intList.getElement(0));
 }
-TEST(ListTest, AddMoreThenCapaticity) {
+TEST(ListTest, AddMoreThenCapaticityList) {
     List<int> a(5);
     a.addElement(1);
     a.addElement(2);
@@ -21,7 +21,7 @@ TEST(ListTest, AddMoreThenCapaticity) {
     a.addElement(6);
     EXPECT_EQ(a.getSize(), 6);
 }
-TEST(ListTest, BigCountOfData) {
+TEST(ListTest, BigCountOfDataList) {
     List<int> a(5);
     for (int i = 0; i < 10000; i++) {
         a.addElement(i);
@@ -29,14 +29,14 @@ TEST(ListTest, BigCountOfData) {
     EXPECT_EQ(a.getSize(), 10000);
 }
 
-TEST(ListTest, RemoveElement) {
+TEST(ListTest, RemoveElementList) {
     List<int> a;
     a.addElement(5);
     a.removeElement(0);
-    EXPECT_EQ(0, intList.getSize());
+    EXPECT_EQ(0, a.getSize());
 }
 
-TEST(ListTest, RemoveOneElementFromStart) {
+TEST(ListTest, RemoveOneElementFromStartList) {
     List<int> a(5);
     a.addElement(1);
     a.addElement(2);
@@ -46,7 +46,7 @@ TEST(ListTest, RemoveOneElementFromStart) {
     a.removeElement(0);
     EXPECT_EQ(a.getElement(0), 2);
 }
-TEST(Arry, RemoveOneElementFromMiddle) {
+TEST(Arry, RemoveOneElementFromMiddleList) {
     List<int> a(5);
     for (int i = 0; i < 1000; i++) {
         a.addElement(i);

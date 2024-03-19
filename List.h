@@ -77,7 +77,7 @@ template<typename T>
 List<T>::~List(){
     node* now;
 	while(beg_){
-		now = beg_->next;
+		now = beg_->next__;
 		delete beg_;
 		beg_ = now;
 	}
@@ -88,18 +88,18 @@ List<T>::~List(){
 template<typename T>
 void List<T>::addElement(T elem)
 {
-    node Adder=new node;
-    Adder.data__ = elem;
-    Adder.next__ = nullptr;
+    node* Adder=new node;
+    Adder->data__ = elem;
+    Adder->next__ = nullptr;
     if(size_!=0)
     {
-        end_->next__=&Adder;
-        end_=&Adder;
+        end_->next__=Adder;
+        end_=Adder;
     }
     else
     {
-        beg_=&Adder;
-        end_=&Adder;
+        beg_=Adder;
+        end_=Adder;
     }
     ++size_;
 }
