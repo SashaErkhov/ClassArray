@@ -56,7 +56,9 @@ List<T>::List(size_t size): size_(size){
         beg_=nullptr;
         end_=nullptr;
     } else {
-        for(size_t i=0; )
+        for(size_t i=0; i<size; ++i){
+            this->addElement(T());
+        }
     }
 }
 
