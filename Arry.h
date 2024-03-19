@@ -2,6 +2,7 @@
 #ifndef ARRAY_OUR_WORK
 #define ARRAY_OUR_WORK
 #include <iostream>
+#include <stdexcept>
 
 template <typename T> class Arry{
 	T* m_bytes;
