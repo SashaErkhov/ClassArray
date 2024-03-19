@@ -1,6 +1,6 @@
 #ifndef LIST_PVM_2023
 #define LIST_PVM_2023
-
+#include <stdexcept>
 //TODO
 template<typename T>
 class List
@@ -29,4 +29,17 @@ public:
     List& operator=(List&&);
 };
 
+void List<T>::setElement(size_t pos, T value) {
+    // this func set element with value on pos 
+    if (pos >= size_) {
+        throw std::out_of_range("pos out of range");
+    }
+
+    node* current = beg_;
+    for (size_t i = 0; i < pos; i++) {
+        current = current->next__;
+    }
+
+    current->data__ = value;
+}
 #endif // !LIST_PVM_2023
