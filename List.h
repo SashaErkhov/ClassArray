@@ -15,9 +15,22 @@ private:
     node* beg_;
     node* end_;
 public:
-    List(size_t size=0);
+    List(size_t size=0){
+        size_=0;
+        beg_=nullptr;
+        end_=nullptr;
+    }
     size_t getSize()const;
-    ~List();
+    ~List(){
+        node* now;
+	    while(beg_){
+		    now = beg_->next;
+		    delete beg_;
+		    beg_ = now;
+	    }
+	    beg_ = end_ = nullptr;
+	    size_ = 0;
+    }
     void addElement(T elem);
     void removeElement(size_t pos);
     T getElement(size_t  pos);
