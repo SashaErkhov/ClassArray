@@ -33,13 +33,24 @@ template<typename T>
 void List<T>::addElement(T elem)
 {
     node Adder;
-    Adder.data__=elem;
-    Adder.next__=nullptr;
-    end_->next__=&Adder;
-    end_=&Adder;
+    Adder.data__ = elem;
+    Adder.next__ = nullptr;
+    ++size_;
+    if(size_!=0)
+    {
+        end_->next__=&Adder;
+        end_=&Adder;
+    }
+    else
+    {
+        beg_=&Adder;
+        end_=&Adder;
+    }
 }
+
 template<typename T>
-void List<T>::removeElement(size_t pos){
+void List<T>::removeElement(size_t pos)
+{
 		node* current = beg_;
 		node* prev = nullptr;
 		size_t i=0;
@@ -63,7 +74,7 @@ void List<T>::removeElement(size_t pos){
 				current = current->next__;
 			}
 		}
-	}
+}
 
 template<typename T>
 void List<T>::setElement(size_t pos, T value) {
