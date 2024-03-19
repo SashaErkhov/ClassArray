@@ -104,4 +104,20 @@ void List<T>::setElement(size_t pos, T value) {
     current->data__ = value;
 }
 
+template<typename T>
+T List<T>::getElement(size_t pos)
+{
+    if (pos < 0 || pos >= size_) {
+        throw std::out_of_range("wrong position");
+    }
+
+    node* current = beg_;
+    
+    for (size_t i = 0; i < pos; i++) {
+        current = current->next__;
+    }
+
+    return current->data__;
+}
+
 #endif // !LIST_PVM_2023
