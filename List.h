@@ -14,10 +14,10 @@ private:
     size_t size_;
     node* beg_;
     node* end_;
-    size_t caret_;
+    node* caret_;
 public:
-    List(size_t size=0);
-    size_t getSize()const;
+    List(size_t size=0):size_(size);
+     size_t getSize() const {return size_;};
     ~List();
     void addElement(T elem);
     void removeElement(size_t pos);
@@ -30,10 +30,15 @@ public:
     List& operator=(List&&);
 
     void rewindCaret();
-    bool isCaretAtAnd();
+    bool isCaretAtEnd();
     T getElement();
     void moveToNextPos();
 };
+
+template<typename T>
+void List<T>::rewindCaret() {
+    caret_ = beg_;
+}
 
 template<typename T>
 List<T>::List(const List& other) : size_(other.size_), beg_(nullptr), end_(nullptr) {
@@ -126,6 +131,41 @@ void List<T>::removeElement(size_t pos)
 			}
 		}
 }
+template<typename T>
+List<T>& List<T>::operator=(const List& other){
+    if (this!=&other){
+        while(beg_!=nullptr){
+            removeElement(beg_);
+        }
+        size_=0;
+        beg_=end_=nullptr;
+        current=other.beg_;
+        while(current!=nullptr){
+            addElement(current->data__);
+            current=current->next__;
+        }
+    }
+    return *this;
+}
+
+template<typename T>
+List<T>& List<T>::operator=(List&& other){
+    if (this!=&other){
+        while(beg_!=nullptr){
+            removeElement(beg_);
+        }
+        size_=0;
+        beg_=end_=nullptr;
+        
+        size_=std::move(other.size_);
+        beg_=std::move(other.beg_);
+        end_=std::move(other.end_);
+        
+        other.size_=0;
+        other.beg_=other.end_=nullptr;
+    }
+    return *this;
+}
 
 template<typename T>
 void List<T>::setElement(size_t pos, T value) {
@@ -156,6 +196,11 @@ T List<T>::getElement(size_t pos)
     }
 
     return current->data__;
+}
+
+template<typename T>
+void List<T>::moveToNextPos(){
+    caret_=caret_->next__;
 }
 
 #endif // !LIST_PVM_2023

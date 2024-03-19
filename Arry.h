@@ -2,6 +2,7 @@
 #ifndef ARRAY_OUR_WORK
 #define ARRAY_OUR_WORK
 #include <iostream>
+#include <stdexcept>
 
 template <typename T> class Arry{
 	T* m_bytes;
@@ -12,7 +13,12 @@ public:
     void rewindCaret();
     bool isCaretAtEnd();
     T getElement();
-    void moveToNextPos();
+	void moveToNextPos(){
+		if (isCaretAtEnd){
+			throw std::out_of_range("Next pos is not in array")
+		}
+		caret++;
+	}
 	Arry(size_t size=1) {
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
@@ -85,5 +91,10 @@ public:
 	const T& operator[](size_t pos)const {return m_bytes[pos];}
 	T& operator[](size_t pos) {return m_bytes[pos];}
 };
+
+template<typename T>
+void Arry<T>::rewindCaret() {
+    caret = 0;
+}
 
 #endif // !ARRAY_OUR_WORK
