@@ -24,7 +24,7 @@ public:
     void setElement(size_t pos, T value);
 
     List(const List&);
-    List(List&&));
+    List(List&&);
     List& operator=(const List&);
     List& operator=(List&&);
 };
