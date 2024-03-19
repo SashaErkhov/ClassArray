@@ -6,7 +6,14 @@ template<typename T>
 class List
 {
 private:
-    
+    size_t size_;
+    node* beg_;
+    node* end_;
+    struct node
+    {
+        T data__;
+        node* next__;
+    };
 public:
     List(size_t size=0);
     size_t getSize()const;
