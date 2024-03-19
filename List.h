@@ -36,6 +36,11 @@ public:
 };
 
 template<typename T>
+void List<T>::rewindCaret() {
+    caret_ = beg_;
+}
+
+template<typename T>
 List<T>::List(const List& other) : size_(other.size_), beg_(nullptr), end_(nullptr) {
     if (other.size_ == 0) {
         return;
