@@ -30,6 +30,19 @@ public:
 };
 
 template<typename T>
+List<T>::List(const List& other) : size_(other.size_), beg_(nullptr), end_(nullptr) {
+    if (other.size_ == 0) {
+        return;
+    }
+	
+    node* current = other.beg_;
+    while (current != nullptr) {
+        addElement(current->data__);
+        current = current->next__;
+    }
+}
+
+template<typename T>
 List<T>::List(size_t size): size_(size){
     if(size==0){
         size_=0;
