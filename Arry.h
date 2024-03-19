@@ -77,6 +77,8 @@ public:
 	{
 		delete[] m_bytes;
 	}
+	const T& operator[](size_t pos)const {return m_bytes[pos];}
+	T& operator[](size_t pos) {return m_bytes[pos];}
 };
 
 #endif // !ARRAY_OUR_WORK
