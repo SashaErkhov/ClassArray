@@ -14,7 +14,7 @@ private:
     size_t size_;
     node* beg_;
     node* end_;
-    size_t Caret;
+    size_t caret_;
 public:
     List(size_t size=0):size_(size);
     size_t getSize()const;
