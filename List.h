@@ -15,7 +15,11 @@ public:
     void removeElement(size_t pos);
     T getElement(size_t  pos);
     void setElement(size_t pos, T value);
-    
+
+    List(const List&);
+    List(List&&));
+    List& operator=(const List&);
+    List& operator=(List&&);
 };
 
 #endif // !LIST_PVM_2023
