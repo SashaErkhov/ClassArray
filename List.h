@@ -14,9 +14,9 @@ private:
     size_t size_;
     node* beg_;
     node* end_;
-    size_t Caret;
+    size_t caret_;
 public:
-    List(size_t size=0):size_(size);
+    List(size_t size=0);
     size_t getSize()const;
     ~List();
     void addElement(T elem);
@@ -72,7 +72,7 @@ template<typename T>
 List<T>::~List(){
     node* now;
 	while(beg_){
-		now = beg_->next;
+		now = beg_->next__;
 		delete beg_;
 		beg_ = now;
 	}
@@ -83,18 +83,18 @@ List<T>::~List(){
 template<typename T>
 void List<T>::addElement(T elem)
 {
-    node Adder=new node;
-    Adder.data__ = elem;
-    Adder.next__ = nullptr;
+    node* Adder=new node;
+    Adder->data__ = elem;
+    Adder->next__ = nullptr;
     if(size_!=0)
     {
-        end_->next__=&Adder;
-        end_=&Adder;
+        end_->next__=Adder;
+        end_=Adder;
     }
     else
     {
-        beg_=&Adder;
-        end_=&Adder;
+        beg_=Adder;
+        end_=Adder;
     }
     ++size_;
 }
