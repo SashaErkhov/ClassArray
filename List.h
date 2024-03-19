@@ -126,6 +126,41 @@ void List<T>::removeElement(size_t pos)
 			}
 		}
 }
+template<typename T>
+List<T>& List<T>::operator=(const List& other){
+    if (this!=&other){
+        while(beg_!=nullptr){
+            removeElement(beg_);
+        }
+        size_=0;
+        beg_=end_=nullptr;
+        current=other.beg_;
+        while(current!=nullptr){
+            addElement(current->data__);
+            current=current->next__;
+        }
+    }
+    return *this;
+}
+
+template<typename T>
+List<T>& List<T>::operator=(List&& other){
+    if (this!=&other){
+        while(beg_!=nullptr){
+            removeElement(beg_);
+        }
+        size_=0;
+        beg_=end_=nullptr;
+        
+        size_=std::move(other.size_);
+        beg_=std::move(other.beg_);
+        end_=std::move(other.end_);
+        
+        other.size_=0;
+        other.beg_=other.end_=nullptr;
+    }
+    return *this;
+}
 
 template<typename T>
 void List<T>::setElement(size_t pos, T value) {
