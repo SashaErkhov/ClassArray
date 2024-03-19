@@ -17,7 +17,7 @@ private:
     node* caret_;
 public:
     List(size_t size=0):size_(size);
-    size_t getSize()const;
+     size_t getSize() const {return size_;};
     ~List();
     void addElement(T elem);
     void removeElement(size_t pos);
