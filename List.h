@@ -15,22 +15,9 @@ private:
     node* beg_;
     node* end_;
 public:
-    List(size_t size=0){
-        size_=0;
-        beg_=nullptr;
-        end_=nullptr;
-    }
+    List(size_t size=0):size_(size);
     size_t getSize()const;
-    ~List(){
-        node* now;
-	    while(beg_){
-		    now = beg_->next;
-		    delete beg_;
-		    beg_ = now;
-	    }
-	    beg_ = end_ = nullptr;
-	    size_ = 0;
-    }
+    ~List();
     void addElement(T elem);
     void removeElement(size_t pos);
     T getElement(size_t  pos);
@@ -41,6 +28,29 @@ public:
     List& operator=(const List&);
     List& operator=(List&&);
 };
+
+template<typename T>
+List<T>::List(size_t size): size_(size){
+    if(size==0){
+        size_=0;
+        beg_=nullptr;
+        end_=nullptr;
+    } else {
+        for(size_t i=0; )
+    }
+}
+
+template<typename T>
+List<T>::~List(){
+    node* now;
+	while(beg_){
+		now = beg_->next;
+		delete beg_;
+		beg_ = now;
+	}
+	beg_ = end_ = nullptr;
+	size_ = 0;
+}
 
 template<typename T>
 void List<T>::addElement(T elem)
