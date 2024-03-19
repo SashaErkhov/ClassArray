@@ -14,7 +14,7 @@ private:
     size_t size_;
     node* beg_;
     node* end_;
-    size_t caret_;
+    node* caret_;
 public:
     List(size_t size=0):size_(size);
     size_t getSize()const;
@@ -156,6 +156,11 @@ T List<T>::getElement(size_t pos)
     }
 
     return current->data__;
+}
+
+template<typename T>
+void List<T>::moveToNextPos(){
+    caret_=caret_->next__;
 }
 
 #endif // !LIST_PVM_2023
