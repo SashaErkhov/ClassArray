@@ -30,7 +30,7 @@ public:
     List& operator=(List&&);
 
     void rewindCaret();
-    bool isCaretAtAnd();
+    bool isCaretAtEnd();
     T getElement();
     void moveToNextPos();
 };
