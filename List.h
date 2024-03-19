@@ -55,10 +55,9 @@ List<T>::~List(){
 template<typename T>
 void List<T>::addElement(T elem)
 {
-    node Adder;
+    node Adder=new node;
     Adder.data__ = elem;
     Adder.next__ = nullptr;
-    ++size_;
     if(size_!=0)
     {
         end_->next__=&Adder;
@@ -69,6 +68,7 @@ void List<T>::addElement(T elem)
         beg_=&Adder;
         end_=&Adder;
     }
+    ++size_;
 }
 
 template<typename T>
