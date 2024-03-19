@@ -43,6 +43,13 @@ List<T>::List(const List& other) : size_(other.size_), beg_(nullptr), end_(nullp
 }
 
 template<typename T>
+List<T>::List(List&& other) : size_(other.size_), beg_(other.beg_), end_(other.end_) {
+    other.size_ = 0;
+    other.beg_ = nullptr;
+    other.end_ = nullptr;
+}
+
+template<typename T>
 List<T>::List(size_t size): size_(size){
     if(size==0){
         size_=0;
