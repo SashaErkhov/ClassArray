@@ -3,7 +3,7 @@
 #include <stdexcept>
 //TODO
 template<typename T>
-class List
+class List //Need T()
 {
 private:
     struct node
@@ -14,6 +14,7 @@ private:
     size_t size_;
     node* beg_;
     node* end_;
+    size_t Caret;
 public:
     List(size_t size=0):size_(size);
     size_t getSize()const;
@@ -27,6 +28,11 @@ public:
     List(List&&);
     List& operator=(const List&);
     List& operator=(List&&);
+
+    void rewindCaret();
+    bool isCaretAtAnd();
+    T getElement();
+    void moveToNextPos();
 };
 
 template<typename T>
