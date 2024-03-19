@@ -7,7 +7,12 @@ template <typename T> class Arry{
 	T* m_bytes;
 	size_t size = 1;
 	size_t countElement = 0;
+    size_t caret;
 public:
+    void rewindCaret();
+    bool isCaretAtEnd();
+    T getElement();
+    void moveToNextPos();
 	Arry(size_t size=1) {
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
