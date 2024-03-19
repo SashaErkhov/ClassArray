@@ -2,12 +2,20 @@
 #define LIST_PVM_2023
 
 //TODO
+template<typename T>
 class List
 {
 private:
-
+    
 public:
-
+    List(size_t size=0);
+    size_t getSize()const;
+    ~List();
+    void addElement(T elem);
+    void removeElement(size_t pos);
+    T getElement(size_t  pos);
+    void setElement(size_t pos, T value);
+    
 };
 
 #endif // !LIST_PVM_2023
