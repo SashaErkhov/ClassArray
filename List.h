@@ -38,6 +38,32 @@ void List<T>::addElement(T elem)
     end_->next__=&Adder;
     end_=&Adder;
 }
+template<typename T>
+void List<T>::removeElement(size_t pos){
+		node* current = beg_;
+		node* prev = nullptr;
+		size_t i=0;
+		while (current != nullptr) {
+			if (i == pos) {
+				if (prev == nullptr) {
+					beg_ = current->next__;
+				} else {
+					prev->next__ = current->next__;
+				}
+
+				if (current == end_) {
+					end_ = prev;
+				}
+
+				node* nextNode = current->next__;
+				delete current;
+				current = nextNode;
+			} else {
+				prev = current;
+				current = current->next__;
+			}
+		}
+	}
 
 template<typename T>
 void List<T>::setElement(size_t pos, T value) {
