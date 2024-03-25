@@ -11,7 +11,10 @@ template <typename T> class Arry{
     size_t caret;
 public:
     void rewindCaret();
-    bool isCaretAtEnd();
+    bool isCaretAtEnd(){
+	    if(caret>=size){return true;}
+	    return false;
+    }
     T getElement();
 	void moveToNextPos(){
 		if (isCaretAtEnd){
