@@ -10,6 +10,8 @@ private:
     {
         T data__;
         node* next__;
+        node();
+        ~node();
     };
     size_t size_;
     node* beg_;
@@ -203,4 +205,15 @@ void List<T>::moveToNextPos(){
     caret_=caret_->next__;
 }
 
+template<typename T>
+List<T>::node::node(){
+    next__=nullptr;
+    data__=nullptr;
+}
+
+template<typename T>
+List<T>::node::~node(){
+    delete next__;
+    delete data__;
+}
 #endif // !LIST_PVM_2023
