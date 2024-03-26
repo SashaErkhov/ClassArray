@@ -1,16 +1,23 @@
-name: C/C++ CI
+name: Containers
 
-on:
+on: 
+  workflow_dispatch:
   push:
-    branches: [ "main" ]
+    paths-ignore:
+      - '.github/workflows/*'
   pull_request:
     branches: [ "main" ]
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
 
 jobs:
   build:
 
     runs-on: gtest
-
+    timeout-minutes: 5
     steps:
     - uses: actions/checkout@v3
     - name: make
