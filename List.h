@@ -21,13 +21,13 @@ private:
 public:
     List(size_t size=0):size_(size) 
     {
-        if (size == 0) {
-            size_ = 0;
-            beg_ = nullptr;
-            end_ = nullptr;
-        }
-        else {
-            for (size_t i = 0; i<size; ++i) {
+        size_ = 0;
+        beg_ = nullptr;
+        end_ = nullptr;
+        if (size != 0) 
+        {
+            for (size_t i = 0; i<size; ++i) 
+            {
                 this->addElement(T());
             }
         }
