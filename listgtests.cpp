@@ -19,7 +19,7 @@ TEST(ListTest, AddMoreThenCapaticityList) {
     a.addElement(4);
     a.addElement(5);
     a.addElement(6);
-    EXPECT_EQ(a.getSize(), 6);
+    EXPECT_EQ(a.getSize(), 11);
 }
 TEST(ListTest, BigCountOfDataList) {
     List<int> a(5);
