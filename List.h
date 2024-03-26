@@ -44,6 +44,12 @@ public:
         iterator& operator++(int);
         iterator& operator--(int);
     };
+	iterator begin() const {
+		return iterator(beg_);
+	}
+	iterator end() const {
+		return iterator(end_);
+	}
 };
 
 template<typename T>
