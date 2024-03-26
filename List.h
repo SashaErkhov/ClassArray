@@ -259,7 +259,7 @@ typename List<T>::iterator& List<T>::iterator::operator++(int){
 template<typename T>
 typename List<T>::iterator& List<T>::iterator::operator--(){
     node* parent=nullptr;
-    node* now=List.beg_;
+    node* now=List<T>.beg_;
     while(now!=nullptr && now!=current){
         parent=now;
         now=now->next__;
@@ -274,7 +274,7 @@ typename List<T>::iterator& List<T>::iterator::operator--(){
 template<typename T>
 typename List<T>::iterator& List<T>::iterator::operator--(int){
     node* parent=nullptr;
-    node* now=List.beg_;
+    node* now=List<T>.beg_;
     while(now!=nullptr && now!=current){
         parent=now;
         now=now->next__;
