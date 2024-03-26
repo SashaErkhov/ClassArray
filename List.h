@@ -52,6 +52,7 @@ public:
 	iterator end() const {
 		return iterator(end_);
 	}
+    friend class List;
 };
 
 template<typename T>
