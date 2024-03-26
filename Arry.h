@@ -117,6 +117,14 @@ public:
 		}
 		friend class Arry; 
 	};
+
+	iterator begin(){
+	 	return iterator(m_bytes);
+	}
+
+	iterator end(){
+		return iterator(m_bytes+countElement);
+	}
 };
 
 template<typename T>
