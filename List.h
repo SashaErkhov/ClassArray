@@ -231,4 +231,25 @@ List<T>::node::~node(){
     delete next__;
     delete data__;
 }
+
+template<typename T>
+typename List<T>::iterator& List<T>::iterator::operator++(){
+    if(current){
+        current=current->next;
+    } else {
+        throw "Iterator: out of bounds";
+    }
+    return *this;
+}
+
+template<typename T>
+typename List<T>::iterator& List<T>::iterator::operator++(int){
+    node* tmp = current; 
+	if (current){
+        current = current->next;
+	}else{
+        throw "Iterator: out of bounds";
+    }
+    return iterator(tmp);
+}
 #endif // !LIST_PVM_2023
