@@ -290,4 +290,5 @@ template<typename T>
 bool List<T>::CheckEnd() {
     return caret_ == end_;
 }
+
 #endif // !LIST_PVM_2023
