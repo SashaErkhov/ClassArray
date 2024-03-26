@@ -36,10 +36,13 @@ public:
     void moveToNextPos();
     class iterator{
 	    //TODO
-	    T* current;
+	    node* current;
 	public:
-		iterator(T* el=nullptr) cuurent(el){}
-		
+		iterator(node* el=nullptr) current(el){}
+		iterator& operator++();
+        iterator& operator--();
+        iterator& operator++(int);
+        iterator& operator--(int);
     };
 };
 
