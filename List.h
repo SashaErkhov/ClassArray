@@ -18,7 +18,19 @@ private:
     node* end_;
     node* caret_;
 public:
-    List(size_t size=0):size_(size) {}
+    List(size_t size=0):size_(size) 
+    {
+        if (size == 0) {
+            size_ = 0;
+            beg_ = nullptr;
+            end_ = nullptr;
+        }
+        else {
+            for (size_t i = 0; i<size; ++i) {
+                this->addElement(T());
+            }
+        }
+    }
      size_t getSize() const {return size_;};
     ~List();
     void addElement(T elem);
@@ -45,6 +57,7 @@ public:
         iterator& operator--();
         iterator& operator++(int);
         iterator& operator--(int);
+        friend List;
     };
 	iterator begin() const {
 		return iterator(beg_);
@@ -80,18 +93,6 @@ List<T>::List(List&& other) : size_(other.size_), beg_(other.beg_), end_(other.e
     other.end_ = nullptr;
 }
 
-template<typename T>
-List<T>::List(size_t size): size_(size){
-    if(size==0){
-        size_=0;
-        beg_=nullptr;
-        end_=nullptr;
-    } else {
-        for(size_t i=0; i<size; ++i){
-            this->addElement(T());
-        }
-    }
-}
 
 template<typename T>
 List<T>::~List(){
@@ -159,10 +160,10 @@ List<T>& List<T>::operator=(const List& other){
         }
         size_=0;
         beg_=end_=nullptr;
-        current=other.beg_;
-        while(current!=nullptr){
-            addElement(current->data__);
-            current=current->next__;
+        caret_=other.beg_;
+        while(caret_ !=nullptr){
+            addElement(caret_->data__);
+            caret_ = caret_->next__;
         }
     }
     return *this;
