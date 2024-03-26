@@ -11,15 +11,15 @@ private:
     {
         T data__;
         node* next__;
-        node();
-        ~node();
+        //node();
+        //~node();
     };
     size_t size_;
     node* beg_;
     node* end_;
     node* caret_;
 public:
-    List(size_t size=0):size_(size) 
+    List(size_t size=0)
     {
         size_ = 0;
         beg_ = nullptr;
@@ -95,9 +95,12 @@ template<typename T>
 List<T>::~List(){
     node* now;
 	while(beg_){
-		now = beg_->next__;
+		/*now = beg_->next__;
 		delete beg_;
-		beg_ = now;
+		beg_ = now;*/
+        now = beg_;
+        beg_=beg_->next__;
+        delete now;
 	}
 	beg_ = end_ = nullptr;
 	size_ = 0;
@@ -221,17 +224,17 @@ void List<T>::moveToNextPos(){
     caret_=caret_->next__;
 }
 
-template<typename T>
-List<T>::node::node(){
-    next__=nullptr;
-    //data__=nullptr;
-}
+//template<typename T>
+//List<T>::node::node(){
+//    next__=nullptr;
+//    //data__=nullptr;
+//}
 
-template<typename T>
-List<T>::node::~node(){
-    delete next__;
-    //delete data__;
-}
+//template<typename T>
+//List<T>::node::~node(){
+//    delete next__;
+//    //delete data__;
+//}
 
 template<typename T>
 typename List<T>::iterator& List<T>::iterator::operator++(){
