@@ -1,0 +1,23 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: gtest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: test of Arry
+      run: ./arrygtests
+    - name: test of List
+      run: ./listgtests
+    - name: make clean
+      run: make clean
