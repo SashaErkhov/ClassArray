@@ -17,8 +17,8 @@ public:
     }
     T getElement();
 	void moveToNextPos(){
-		if (isCaretAtEnd){
-			throw std::out_of_range("Next pos is not in array")
+		if (isCaretAtEnd()){
+			throw std::out_of_range("Next pos is not in array");
 		}
 		caret++;
 	}
