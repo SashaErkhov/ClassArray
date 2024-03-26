@@ -40,7 +40,7 @@ public:
 	    //TODO
 	    node* current;
 	public:
-		iterator(node* el=nullptr) current(el){}
+		iterator(node* el=nullptr): current(el){}
 		iterator& operator++();
         iterator& operator--();
         iterator& operator++(int);
