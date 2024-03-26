@@ -34,6 +34,8 @@ public:
     bool isCaretAtEnd();
     T getElement();
     void moveToNextPos();
+    bool ChechEnd();
+	    
     class iterator{
 	    //TODO
 	    node* current;
@@ -281,5 +283,10 @@ typename List<T>::iterator& List<T>::iterator::operator--(int){
     }
     current=parent;
     return iterator(now);
+}
+
+template<typename T>
+bool List<T>::CheckEnd() {
+    return caret_ == end_;
 }
 #endif // !LIST_PVM_2023
