@@ -93,6 +93,30 @@ public:
 	}
 	const T& operator[](size_t pos)const {return m_bytes[pos];}
 	T& operator[](size_t pos) {return m_bytes[pos];}
+
+	class iterator {
+		T* current;
+	public:
+		iterator(T* p = nullptr) : current(p) {};
+		T& operator*() {
+			return *current;
+		}
+		T& operator*() const {
+			return *current;
+		}
+		iterator& operator++() {
+			++current;
+			return *this;
+		}
+
+		iterator operator++(int)//постфиксная форма 
+		{
+			T* tmp = current;
+			++current;
+			return iterator(tmp);
+		}
+		friend class Arry; 
+	};
 };
 
 template<typename T>
