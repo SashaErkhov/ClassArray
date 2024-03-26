@@ -34,8 +34,12 @@ public:
     bool isCaretAtEnd();
     T getElement();
     void moveToNextPos();
-    class interator{
+    class iterator{
 	    //TODO
+	    T* current;
+	public:
+		iterator(T* el=nullptr) cuurent(el){}
+		
     };
 };
 
