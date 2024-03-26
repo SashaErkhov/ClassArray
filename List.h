@@ -60,12 +60,8 @@ public:
         iterator& operator--(int);
         friend List;
     };
-	iterator begin() const {
-		return iterator(beg_);
-	}
-	iterator end() const {
-		return iterator(end_);
-	}
+    iterator begin() const { return iterator(beg_); }
+    iterator end() const { return iterator(nullptr); }
     friend class List;
 };
 
@@ -258,35 +254,35 @@ typename List<T>::iterator& List<T>::iterator::operator++(int){
     return iterator(tmp);
 }
 
-template<typename T>
-typename List<T>::iterator& List<T>::iterator::operator--(){
-    node* parent=nullptr;
-    node* now=beg_;
-    while(now!=nullptr && now!=current){
-        parent=now;
-        now=now->next__;
-    }
-    if(now!=current){
-        throw "Iterator: out of bound";
-    }
-    current=parent;
-    return *this;
-}
+//template<typename T>
+//typename List<T>::iterator& List<T>::iterator::operator--(){
+//    node* parent=nullptr;
+//    node* now=beg_;
+//    while(now!=nullptr && now!=current){
+//        parent=now;
+//        now=now->next__;
+//    }
+//    if(now!=current){
+//        throw "Iterator: out of bound";
+//    }
+//    current=parent;
+//    return *this;
+//}
 
-template<typename T>
-typename List<T>::iterator& List<T>::iterator::operator--(int){
-    node* parent=nullptr;
-    node* now=beg_;
-    while(now!=nullptr && now!=current){
-        parent=now;
-        now=now->next__;
-    }
-    if(now!=current){
-        throw "Iterator: out of bound";
-    }
-    current=parent;
-    return iterator(now);
-}
+//template<typename T>
+//typename List<T>::iterator& List<T>::iterator::operator--(int){
+//    node* parent=nullptr;
+//    node* now=beg_;
+//    while(now!=nullptr && now!=current){
+//        parent=now;
+//        now=now->next__;
+//    }
+//    if(now!=current){
+//        throw "Iterator: out of bound";
+//    }
+//    current=parent;
+//    return iterator(now);
+//}
 
 template<typename T>
 bool List<T>::CheckEnd() {
