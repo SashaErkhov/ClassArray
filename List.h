@@ -2,6 +2,7 @@
 #define LIST_PVM_2023
 #include <stdexcept>
 //TODO
+//TODO: delete comments
 template<typename T>
 class List //Need T()
 {
@@ -46,7 +47,7 @@ public:
     bool isCaretAtEnd();
     T getElement();
     void moveToNextPos();
-    bool ChechEnd();
+    bool CheckEnd();
 	    
     class iterator{
 	    //TODO
@@ -227,13 +228,13 @@ void List<T>::moveToNextPos(){
 template<typename T>
 List<T>::node::node(){
     next__=nullptr;
-    data__=nullptr;
+    //data__=nullptr;
 }
 
 template<typename T>
 List<T>::node::~node(){
     delete next__;
-    delete data__;
+    //delete data__;
 }
 
 template<typename T>
