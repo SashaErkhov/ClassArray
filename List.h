@@ -30,11 +30,13 @@ public:
     List(List&&);
     List& operator=(const List&);
     List& operator=(List&&);
-
     void rewindCaret();
     bool isCaretAtEnd();
     T getElement();
     void moveToNextPos();
+    class interator{
+	    //TODO
+    };
 };
 
 template<typename T>
