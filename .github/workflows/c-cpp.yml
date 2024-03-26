@@ -6,7 +6,8 @@ on:
     paths-ignore:
       - '.github/workflows/*'
   pull_request:
-    branches: [ "main" ]
+    paths-ignore:
+      - '.github/workflows/*'
 
 permissions:
   checks: write
@@ -15,7 +16,6 @@ permissions:
 
 jobs:
   build:
-
     runs-on: gtest
     timeout-minutes: 5
     steps:
