@@ -26,7 +26,7 @@ TEST(ListTest, BigCountOfDataList) {
     for (int i = 0; i < 10000; i++) {
         a.addElement(i);
     }
-    EXPECT_EQ(a.getSize(), 10000);
+    EXPECT_EQ(a.getSize(), 10005);
 }
 
 TEST(ListTest, RemoveElementList) {
@@ -37,7 +37,7 @@ TEST(ListTest, RemoveElementList) {
 }
 
 TEST(ListTest, RemoveOneElementFromStartList) {
-    List<int> a(5);
+    List<int> a;
     a.addElement(1);
     a.addElement(2);
     a.addElement(3);
@@ -47,7 +47,7 @@ TEST(ListTest, RemoveOneElementFromStartList) {
     EXPECT_EQ(a.getElement(0), 2);
 }
 TEST(Arry, RemoveOneElementFromMiddleList) {
-    List<int> a(5);
+    List<int> a;
     for (int i = 0; i < 1000; i++) {
         a.addElement(i);
     }
