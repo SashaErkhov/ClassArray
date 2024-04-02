@@ -4,7 +4,7 @@
 
 TEST(Arry, DefaultConstructor) {
     Arry<int> a;
-    EXPECT_EQ(a.getSize(), 1);
+    EXPECT_EQ(a.getSize(), 0);
 }   
 TEST(Arry, AddElement) {
     Arry<int> a;
