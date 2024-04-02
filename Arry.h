@@ -127,28 +127,18 @@ template<typename T>
 void Arry<T>::insert(const typename Arry<T>::iterator &pos, const T &value)
 {
     //Добавление элемента по итератору
-    size_t Pos;//позитиция итератора в массиве
-    bool ok= true;//на случай если элемент не найден
-    for(size_t i=0; i<size; ++i)
-    {
-        if(*pos==m_bytes[i])
-        {
-            Pos=i;
-            ok=false;
-            break;
-        }
-    }
-    if(ok) { throw std::out_of_range("Position is not in array"); }
     T new_bytes=new T[++size];
-    for(size_t i=0;i<=Pos;++i)
+    size_t i=0;
+    while((m_bytes+i)!=(pos+1))
     {
         new_bytes[i]=m_bytes[i];
+        ++i;
     }
-    for(size_t i=size-2; i>Pos; --i)
+    new_bytes[i++]=value;
+    for(size_t j=i; j<size; ++j)
     {
-        new_bytes[i+1]=m_bytes[i];
+        new_bytes[j]=m_bytes[j-1];
     }
-    new_bytes[Pos+1]=value;
     delete[] m_bytes;
     m_bytes=new_bytes;
 }
