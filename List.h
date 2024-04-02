@@ -62,14 +62,13 @@ public:
     };
     iterator begin() const { return iterator(beg_); }
     iterator end() const { return iterator(nullptr); }
-    friend class List;
-    void insert(const iterator& pos, const T& value)
+    void insert(const iterator& pos, const T& value);
 };
 
 template<typename T>
 void List<T>::insert(const typename List::iterator &pos, const T &value)
 {
-    
+
 }
 
 template<typename T>

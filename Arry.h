@@ -6,8 +6,7 @@
 
 template <typename T> class Arry{
 	T* m_bytes;
-	size_t size = 1;
-	size_t countElement = 0;
+	size_t size = 0;
     size_t caret;
 public:
     void rewindCaret();
@@ -22,35 +21,29 @@ public:
 		}
 		caret++;
 	}
-	Arry(size_t size=1) {
+	Arry(size_t size=0) {
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
 	}
 	size_t getSize() const{ return size; }
 	void addElement(T elem) {
-	/*This function add new element. 
- 	Its check size and if out size <
-  	than count of element do resize 
-	for size+1*/
-	    if (countElement + 1 > size) {
-	        resize(size + 1);
-	    }
-	    m_bytes[countElement] = elem;
-	    countElement++;
+	    T* new_bytes = new T[++size];
+        for (size_t i = 0; i < (size-1); ++i) {
+            new_bytes[i] = m_bytes[i];
+        }
+        new_bytes[size-1] = elem;
+        delete[] m_bytes;
+        m_bytes = new_bytes;
 	}
 	void removeElement(size_t pos) {
-	    /*This function remove eleemnt from pos
-		and move for 1 point other element better(for pos)
-	 	than this.*/
 	    if (pos >= size) {
 	        return;
 	    }
-	    
+
 	    for (size_t i = pos; i < size - 1; ++i) {
 	        m_bytes[i] = m_bytes[i + 1];
 	    }
-	    
-	    countElement--;
+        --size;
 	}
 
 	T getElement(size_t pos)
@@ -123,7 +116,7 @@ public:
 	}
 
 	iterator end(){
-		return iterator(m_bytes+countElement);
+		return iterator(nullptr);
 	}
 
     void insert(const iterator& pos, const T& value);
@@ -133,7 +126,30 @@ public:
 template<typename T>
 void Arry<T>::insert(const typename Arry<T>::iterator &pos, const T &value)
 {
-
+    size_t Pos;
+    bool ok= true;
+    for(size_t i=0; i<size; ++i)
+    {
+        if(*pos==m_bytes[i])
+        {
+            Pos=i;
+            ok=false;
+            break;
+        }
+    }
+    if(ok) { throw std::out_of_range("Position is not in array"); }
+    T new_bytes=new T[++size];
+    for(size_t i=0;i<=Pos;++i)
+    {
+        new_bytes[i]=m_bytes[i];
+    }
+    for(size_t i=size-2; i>Pos; --i)
+    {
+        new_bytes[i+1]=m_bytes[i];
+    }
+    new_bytes[Pos+1]=value;
+    delete[] m_bytes;
+    m_bytes=new_bytes;
 }
 
 template<typename T>
