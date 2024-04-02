@@ -54,3 +54,39 @@ TEST(ListTest, RemoveOneElementFromMiddleList) {
     a.removeElement(500);
     EXPECT_EQ(a.getElement(500), 501);
 }
+
+TEST(ListTest, InsertToBegin){
+    List<int> a;
+    a.addElement(20);
+    a.insert(a.begin(),10);
+    EXPECT_EQ(a.getElement(0),10);
+}
+
+TEST(ListTest,InsertToEnd){
+    List<int> a;
+    a.addElement(10);
+    a.insert(a.end(),20);
+    EXPECT_EQ(a.getElement(a.getSize()-1),20);
+}
+
+TEST(ListTest,InsertToMiddle){
+    List<int> a;
+    a.addElement(10);
+    a.addElement(30);
+    a.insert(++a.begin(),20);
+    EXPECT_EQ(a.getElement(1),20);
+}
+
+TEST(ListTest,InsertWithOne){
+    List<int> a;
+    a.addElement(10);
+    a.insert(a.begin(),20);
+    EXPECT_EQ(a.getElement(0),20);
+    EXPECT_EQ(a.getElement(1),10);
+}
+
+TEST(ListTest,InsertToEmpty){
+    List<int> a;
+    a.insert(a.begin(),10);
+    EXPECT_EQ(a.getElement(0),10);
+}
