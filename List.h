@@ -255,7 +255,7 @@ void List<T>::moveToNextPos(){
 template<typename T>
 typename List<T>::iterator& List<T>::iterator::operator++(){
     if(current){
-        current=current->next;
+        current=current->next__;
     } else {
         throw "Iterator: out of bounds";
     }
@@ -266,7 +266,7 @@ template<typename T>
 typename List<T>::iterator List<T>::iterator::operator++(int){
     node* tmp = current; 
 	if (current){
-        current = current->next;
+        current = current->next__;
 	}else{
         throw "Iterator: out of bounds";
     }
