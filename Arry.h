@@ -125,7 +125,16 @@ public:
 	iterator end(){
 		return iterator(m_bytes+countElement);
 	}
+
+    void insert(const iterator& pos, const T& value);
 };
+
+//TODO
+template<typename T>
+void Arry<T>::insert(const typename Arry<T>::iterator &pos, const T &value)
+{
+
+}
 
 template<typename T>
 void Arry<T>::rewindCaret() {
