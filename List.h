@@ -164,6 +164,7 @@ void List<T>::removeElement(size_t pos)
 				prev = current;
 				current = current->next__;
 			}
+            ++i;
 		}
         --size_;
 }
