@@ -55,9 +55,13 @@ public:
 	public:
 		iterator(node* el=nullptr): current(el){}
 		iterator& operator++();
-        iterator& operator--();
-        iterator& operator++(int);
-        iterator& operator--(int);
+        //iterator& operator--();
+        iterator operator++(int);
+        //iterator& operator--(int);
+        T& operator*() {return current->data__;}
+        T& operator*() const {return current->data__;}
+        bool operator==(const iterator& other){current == other.current;}
+        bool operator!=(const iterator& other){current!= other.current;}
         friend List;
     };
     iterator begin() const { return iterator(beg_); }
@@ -68,7 +72,11 @@ public:
 template<typename T>
 void List<T>::insert(const typename List::iterator &pos, const T &value)
 {
-
+    node* now=pos;
+    node* newNode = new node;
+    newNode->data__ = value;
+    newNode->next__ = now->next__;
+    now->next__ = newNode;
 }
 
 template<typename T>
@@ -253,7 +261,7 @@ typename List<T>::iterator& List<T>::iterator::operator++(){
 }
 
 template<typename T>
-typename List<T>::iterator& List<T>::iterator::operator++(int){
+typename List<T>::iterator List<T>::iterator::operator++(int){
     node* tmp = current; 
 	if (current){
         current = current->next;
