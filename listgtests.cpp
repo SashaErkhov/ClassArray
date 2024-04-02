@@ -46,7 +46,7 @@ TEST(ListTest, RemoveOneElementFromStartList) {
     a.removeElement(0);
     EXPECT_EQ(a.getElement(0), 2);
 }
-TEST(Arry, RemoveOneElementFromMiddleList) {
+TEST(ListTest, RemoveOneElementFromMiddleList) {
     List<int> a;
     for (int i = 0; i < 1000; i++) {
         a.addElement(i);

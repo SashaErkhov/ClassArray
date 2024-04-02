@@ -165,6 +165,7 @@ void List<T>::removeElement(size_t pos)
 				current = current->next__;
 			}
 		}
+        --size_;
 }
 template<typename T>
 List<T>& List<T>::operator=(const List& other){
