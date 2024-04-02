@@ -126,8 +126,9 @@ public:
 template<typename T>
 void Arry<T>::insert(const typename Arry<T>::iterator &pos, const T &value)
 {
-    size_t Pos;
-    bool ok= true;
+    //Добавление элемента по итератору
+    size_t Pos;//позитиция итератора в массиве
+    bool ok= true;//на случай если элемент не найден
     for(size_t i=0; i<size; ++i)
     {
         if(*pos==m_bytes[i])
