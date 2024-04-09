@@ -1,7 +1,8 @@
 #pragma once
 #include "Arry.h"
 
-template < class Key, class Data> class Assoc{ 
+template < class Key, class Data> class Assoc{
+private:
 	// Key - то , по чему находим, 
 	// Data - то, что находим
 	struct node {
@@ -9,6 +10,14 @@ template < class Key, class Data> class Assoc{
 		Data data;
 	};
 	Arry<node> m_storage;
+
+	typename Arry<node>::iterator findInsertionPoint(const Key& key) {
+        auto it = m_storage.begin();
+        while (it != m_storage.end() && it->key < key) {
+            	++it;
+        }
+        	return it;
+    	}
 public:
 	Assoc() {}		
 	addPair(Key k, Data d) { // Добавляем соответствие
