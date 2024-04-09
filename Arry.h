@@ -119,6 +119,8 @@ public:
 		return iterator(nullptr);
 	}
 
+	friend iterator binarySearch(T value, iterator begin, iterator end);
+
     void insert(const iterator& pos, const T& value);
 };
 
