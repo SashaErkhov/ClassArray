@@ -18,13 +18,12 @@ public:
     		m_storage.addElement(newNode);
 	}
 
-		Data findByKey(Key k) { // Здесь генерируется исключение!!! (Возможно)
-
-			Arry<node>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
-			if (res) { // Нашли
-			}
-			else { //Не нашли
-			}
-		}
-
+	Data findByKey(Key k) { // Здесь генерируется исключение!!! (Возможно)
+		Arry<node>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
+		if (res != m_storage.end()) {
+        		return (*res).data;
+    		} else {
+        		throw ... ;
+    		}
+	}
 };
