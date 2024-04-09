@@ -15,15 +15,16 @@ public:
 		node newNode;
     		newNode.key = k;
     		newNode.data = d;
-    		m_storage.addElement(newNode);
+    		auto pos = findInsertionPoint(k, m_storage);
+    		m_storage.insert(pos, newNode);
 	}
 
-	Data findByKey(Key k) { // Здесь генерируется исключение!!! (Возможно)
+	Data findByKey(Key k) {
 		Arry<node>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
 		if (res != m_storage.end()) {
         		return (*res).data;
     		} else {
-        		throw ... ;
+        		throw std::runtime_error("Key not found");;
     		}
 	}
 };
