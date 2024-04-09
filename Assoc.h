@@ -11,7 +11,12 @@ template < class Key, class Data> class Assoc{
 	Arry<node> m_storage;
 public:
 	Assoc() {}		
-	addPair(Key k, Data d); // Добавляем соответствие
+	addPair(Key k, Data d) { // Добавляем соответствие
+		node newNode;
+    		newNode.key = k;
+    		newNode.data = d;
+    		m_storage.addElement(newNode);
+	}
 
 		Data findByKey(Key k) { // Здесь генерируется исключение!!! (Возможно)
 
