@@ -1,8 +1,9 @@
 #ifndef LIST_PVM_2023
 #define LIST_PVM_2023
 #include <stdexcept>
-//TODO
+
 //TODO: delete comments
+
 template<typename T>
 class List //Need T()
 {
@@ -19,20 +20,20 @@ private:
     node* end_;
     node* caret_;
 public:
-    List(size_t size=0)
+    List(size_t size = 0)
     {
         size_ = 0;
         beg_ = nullptr;
         end_ = nullptr;
-        if (size != 0) 
+        if (size != 0)
         {
-            for (size_t i = 0; i<size; ++i) 
+            for (size_t i = 0; i < size; ++i)
             {
                 this->addElement(T());
             }
         }
     }
-     size_t getSize() const {return size_;};
+    size_t getSize() const { return size_; };
     ~List();
     void addElement(T elem);
     void removeElement(size_t pos);
@@ -48,20 +49,20 @@ public:
     T getElement();
     void moveToNextPos();
     bool CheckEnd();
-	    
-    class iterator{
-	    //TODO
-	    node* current;
-	public:
-		iterator(node* el=nullptr): current(el){}
-		iterator& operator++();
+
+    class iterator {
+        //TODO
+        node* current;
+    public:
+        iterator(node* el = nullptr) : current(el) {}
+        iterator& operator++();
         //iterator& operator--();
         iterator operator++(int);
         //iterator& operator--(int);
-        T& operator*() {return current->data__;}
-        T& operator*() const {return current->data__;}
-        bool operator==(const iterator& other){current == other.current;}
-        bool operator!=(const iterator& other){current!= other.current;}
+        T& operator*() { return current->data__; }
+        T& operator*() const { return current->data__; }
+        bool operator==(const iterator& other) const { return current == other.current; }
+        bool operator!=(const iterator& other) const { return current != other.current; }
         friend List;
     };
     iterator begin() const { return iterator(beg_); }
@@ -70,9 +71,9 @@ public:
 };
 
 template<typename T>
-void List<T>::insert(const typename List::iterator &pos, const T &value)
+void List<T>::insert(const typename List::iterator& pos, const T& value)
 {
-    node* now=pos;
+    node* now = pos;
     node* newNode = new node;
     newNode->data__ = value;
     newNode->next__ = now->next__;
@@ -89,7 +90,7 @@ List<T>::List(const List& other) : size_(other.size_), beg_(nullptr), end_(nullp
     if (other.size_ == 0) {
         return;
     }
-	
+
     node* current = other.beg_;
     while (current != nullptr) {
         addElement(current->data__);
@@ -106,35 +107,35 @@ List<T>::List(List&& other) : size_(other.size_), beg_(other.beg_), end_(other.e
 
 
 template<typename T>
-List<T>::~List(){
+List<T>::~List() {
     node* now;
-	while(beg_){
-		/*now = beg_->next__;
-		delete beg_;
-		beg_ = now;*/
+    while (beg_) {
+        /*now = beg_->next__;
+        delete beg_;
+        beg_ = now;*/
         now = beg_;
-        beg_=beg_->next__;
+        beg_ = beg_->next__;
         delete now;
-	}
-	beg_ = end_ = nullptr;
-	size_ = 0;
+    }
+    beg_ = end_ = nullptr;
+    size_ = 0;
 }
 
 template<typename T>
 void List<T>::addElement(T elem)
 {
-    node* Adder=new node;
+    node* Adder = new node;
     Adder->data__ = elem;
     Adder->next__ = nullptr;
-    if(size_!=0)
+    if (size_ != 0)
     {
-        end_->next__=Adder;
-        end_=Adder;
+        end_->next__ = Adder;
+        end_ = Adder;
     }
     else
     {
-        beg_=Adder;
-        end_=Adder;
+        beg_ = Adder;
+        end_ = Adder;
     }
     ++size_;
 }
@@ -142,67 +143,71 @@ void List<T>::addElement(T elem)
 template<typename T>
 void List<T>::removeElement(size_t pos)
 {
-		node* current = beg_;
-		node* prev = nullptr;
-		size_t i=0;
-		while (current != nullptr) {
-			if (i == pos) {
-				if (prev == nullptr) {
-					beg_ = current->next__;
-				} else {
-					prev->next__ = current->next__;
-				}
+    node* current = beg_;
+    node* prev = nullptr;
+    size_t i = 0;
+    while (current != nullptr) {
+        if (i == pos) {
+            if (prev == nullptr) {
+                beg_ = current->next__;
+            }
+            else {
+                prev->next__ = current->next__;
+            }
 
-				if (current == end_) {
-					end_ = prev;
-				}
+            if (current == end_) {
+                end_ = prev;
+            }
 
-				node* nextNode = current->next__;
-				delete current;
-				current = nextNode;
-			} else {
-				prev = current;
-				current = current->next__;
-			}
-            ++i;
-		}
-        --size_;
-}
-template<typename T>
-List<T>& List<T>::operator=(const List& other){
-    if (this!=&other){
-        while(beg_!=nullptr){
-            removeElement(beg_);
+            node* nextNode = current->next__;
+            delete current;
+            current = nextNode;
         }
-        size_=0;
-        beg_=end_=nullptr;
-        caret_=other.beg_;
-        while(caret_ !=nullptr){
-            addElement(caret_->data__);
-            caret_ = caret_->next__;
+        else {
+            prev = current;
+            current = current->next__;
         }
+        ++i;
     }
-    return *this;
-}
+    --size_;
+} 
 
-template<typename T>
-List<T>& List<T>::operator=(List&& other){
-    if (this!=&other){
-        while(beg_!=nullptr){
-            removeElement(beg_);
-        }
-        size_=0;
-        beg_=end_=nullptr;
-        
-        size_=std::move(other.size_);
-        beg_=std::move(other.beg_);
-        end_=std::move(other.end_);
-        
-        other.size_=0;
-        other.beg_=other.end_=nullptr;
-    }
-    return *this;
-}
+// !!! Needs fix and review !!!
+//template<typename T>
+//List<T>& List<T>::operator=(const List& other) {
+//    if (this != &other) {
+//        while (beg_ != nullptr) {
+//            removeElement(beg_);
+//        }
+//        size_ = 0;
+//        beg_ = end_ = nullptr;
+//        caret_ = other.beg_;
+//        while (caret_ != nullptr) {
+//            addElement(caret_->data__);
+//            caret_ = caret_->next__;
+//        }
+//    }
+//    return *this;
+//}
+//
+//template<typename T>
+//List<T>& List<T>::operator=(List&& other) {
+//    if (this != &other) {
+//        while (beg_ != nullptr) {
+//            removeElement(beg_);
+//        }
+//        size_ = 0;
+//        beg_ = end_ = nullptr;
+//
+//        size_ = std::move(other.size_);
+//        beg_ = std::move(other.beg_);
+//        end_ = std::move(other.end_);
+//
+//        other.size_ = 0;
+//        other.beg_ = other.end_ = nullptr;
+//    }
+//    return *this;
+//}
 
 template<typename T>
 void List<T>::setElement(size_t pos, T value) {
@@ -227,7 +232,7 @@ T List<T>::getElement(size_t pos)
     }
 
     node* current = beg_;
-    
+
     for (size_t i = 0; i < pos; i++) {
         current = current->next__;
     }
@@ -236,8 +241,8 @@ T List<T>::getElement(size_t pos)
 }
 
 template<typename T>
-void List<T>::moveToNextPos(){
-    caret_=caret_->next__;
+void List<T>::moveToNextPos() {
+    caret_ = caret_->next__;
 }
 
 //template<typename T>
@@ -253,21 +258,23 @@ void List<T>::moveToNextPos(){
 //}
 
 template<typename T>
-typename List<T>::iterator& List<T>::iterator::operator++(){
-    if(current){
-        current=current->next__;
-    } else {
+typename List<T>::iterator& List<T>::iterator::operator++() {
+    if (current) {
+        current = current->next__;
+    }
+    else {
         throw "Iterator: out of bounds";
     }
     return *this;
 }
 
 template<typename T>
-typename List<T>::iterator List<T>::iterator::operator++(int){
-    node* tmp = current; 
-	if (current){
+typename List<T>::iterator List<T>::iterator::operator++(int) {
+    node* tmp = current;
+    if (current) {
         current = current->next__;
-	}else{
+    }
+    else {
         throw "Iterator: out of bounds";
     }
     return iterator(tmp);
