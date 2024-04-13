@@ -11,16 +11,16 @@ typename Array<T>::iterator binarySearch(T value, typename Array<T>::iterator be
         auto mid = start + half;
 
         if (*mid == value) {
-            return mid; // Ёлемент найден
+            return mid; // Element found
         }
         else if (*mid < value) {
             start = mid + 1;
-            length -= half + 1; // ќбновл€ем длину дл€ правой части
+            length -= half + 1; // Update length for the right half
         }
         else {
-            length = half; // ќбновл€ем длину дл€ левой части
+            length = half; // Update length for the left half
         }
     }
 
-    return end; // Ёлемент не найден, возвращаем конец диапазона
+    return end; // Element not found, return the end of the range
 }

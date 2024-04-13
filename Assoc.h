@@ -9,8 +9,10 @@ private:
 		Key key;
 		Data data;
 	};
+
 	Arry<node> m_storage;
 
+	// Finds and returns the insertion point for a key in the sorted array.
 	typename Arry<node>::iterator findInsertionPoint(const Key& key) {
 		auto it = m_storage.begin();
 		while (it != m_storage.end() && it->key < key) {
@@ -36,7 +38,7 @@ public:
 			return (*res).data;
 		}
 		else {
-			throw std::runtime_error("Key not found");;
+			throw std::runtime_error("Key not found");
 		}
 	}
 };
