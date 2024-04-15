@@ -28,5 +28,7 @@ jobs:
       run: ./arrygtests
     - name: test of List
       run: ./listgtests
+    - name: test of Assoc
+      run: ./assocgtests
     - name: make clean
       run: make clean
