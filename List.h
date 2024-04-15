@@ -51,7 +51,6 @@ public:
     bool CheckEnd();
 
     class iterator {
-        //TODO
         node* current;
     public:
         iterator(node* el = nullptr) : current(el) {}
@@ -71,13 +70,32 @@ public:
 };
 
 template<typename T>
-void List<T>::insert(const typename List::iterator& pos, const T& value)
+void List<T>::insert(const iterator& pos, const T& value)
 {
-    node* now = pos;
-    node* newNode = new node;
-    newNode->data__ = value;
-    newNode->next__ = now->next__;
-    now->next__ = newNode;
+    node* new_node = new node{ value, nullptr };
+
+    if (pos.current == beg_) {
+        // Insert at the begin of the node
+        new_node->next__ = beg_;
+        beg_ = new_node;
+        if (size_ == 0) end_ = new_node;
+    }
+    else {
+        // Insert at the mid or end of the node
+        node* previous = beg_;
+        while (previous && previous->next__ != pos.current) {
+            previous = previous->next__;
+        }
+
+        new_node->next__ = previous->next__;
+        previous->next__ = new_node;
+
+        if (previous == end_) {
+            end_ = new_node;
+        }
+    }
+
+    size_++;
 }
 
 template<typename T>
