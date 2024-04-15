@@ -18,7 +18,6 @@ private:
     size_t size_;
     node* beg_;
     node* end_;
-    node* caret_;
 public:
     List(size_t size = 0)
     {
@@ -44,11 +43,6 @@ public:
     List(List&&);
     List& operator=(const List&);
     List& operator=(List&&);
-    void rewindCaret();
-    bool isCaretAtEnd();
-    T getElement();
-    void moveToNextPos();
-    bool CheckEnd();
 
     class iterator {
         node* current;
@@ -95,12 +89,7 @@ void List<T>::insert(const iterator& pos, const T& value)
         }
     }
 
-    size_++;
-}
-
-template<typename T>
-void List<T>::rewindCaret() {
-    caret_ = beg_;
+    ++size_;
 }
 
 template<typename T>
@@ -258,11 +247,6 @@ T List<T>::getElement(size_t pos)
     return current->data__;
 }
 
-template<typename T>
-void List<T>::moveToNextPos() {
-    caret_ = caret_->next__;
-}
-
 //template<typename T>
 //List<T>::node::node(){
 //    next__=nullptr;
@@ -327,10 +311,5 @@ typename List<T>::iterator List<T>::iterator::operator++(int) {
 //    current=parent;
 //    return iterator(now);
 //}
-
-template<typename T>
-bool List<T>::CheckEnd() {
-    return caret_ == end_;
-}
 
 #endif // !LIST_PVM_2023

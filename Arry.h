@@ -7,20 +7,7 @@
 template <typename T> class Arry{
 	T* m_bytes;
 	size_t size = 0;
-    size_t caret;
 public:
-    void rewindCaret();
-    bool isCaretAtEnd(){
-	    if(caret>=size){return true;}
-	    return false;
-    }
-    T getElement();
-	void moveToNextPos(){
-		if (isCaretAtEnd()){
-			throw std::out_of_range("Next pos is not in array");
-		}
-		caret++;
-	}
 	Arry(size_t size=0) {
 	/*standart constructor with size*/
 	    m_bytes = new T[size];
@@ -119,7 +106,7 @@ public:
 		return iterator(nullptr);
 	}
 
-	friend iterator binarySearch(T value, iterator begin, iterator end);
+	friend iterator binarySearch(T value, iterator begin, iterator end);//сомнительно, friend - плохо
 
     void insert(const iterator& pos, const T& value);
 };
@@ -143,11 +130,6 @@ void Arry<T>::insert(const typename Arry<T>::iterator &pos, const T &value)
     }
     delete[] m_bytes;
     m_bytes=new_bytes;
-}
-
-template<typename T>
-void Arry<T>::rewindCaret() {
-    caret = 0;
 }
 
 #endif // !ARRAY_OUR_WORK
