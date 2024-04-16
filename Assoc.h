@@ -75,4 +75,6 @@ public:
 	iterator end() {
 		return iterator(m_storage.end());
 	}
+
+	size_t getSize(){return m_storage.getSize();}
 };
