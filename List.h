@@ -34,7 +34,6 @@ public:
     }
     size_t getSize() const { return size_; };
     ~List();
-    void addElement(T elem);
     void removeElement(size_t pos);
     T getElement(size_t  pos);
     void setElement(size_t pos, T value);
@@ -61,6 +60,7 @@ public:
     iterator begin() const { return iterator(beg_); }
     iterator end() const { return iterator(nullptr); }
     void insert(const iterator& pos, const T& value);
+    iterator addElement(T elem);
 };
 
 template<typename T>
@@ -129,7 +129,7 @@ List<T>::~List() {
 }
 
 template<typename T>
-void List<T>::addElement(T elem)
+typename List<T>::iterator List<T>::addElement(T elem)
 {
     node* Adder = new node;
     Adder->data__ = elem;
@@ -145,6 +145,7 @@ void List<T>::addElement(T elem)
         end_ = Adder;
     }
     ++size_;
+    return iterator(Adder);
 }
 
 template<typename T>

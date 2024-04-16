@@ -90,3 +90,21 @@ TEST(ListTest,InsertToEmpty){
     a.insert(a.begin(),10);
     EXPECT_EQ(a.getElement(0),10);
 }
+
+TEST(ListTest,NewFeatureForAddElem)
+{
+    List<int> a;
+    auto p1=a.addElement(10);
+    auto p2=a.addElement(20);
+    auto p3=a.addElement(30);
+    auto p4=a.addElement(40);
+    auto p5=a.addElement(50);
+    EXPECT_EQ(a.getSize(),5);
+    EXPECT_EQ(a.getElement(0),10);
+    EXPECT_EQ(a.getElement(1),20);
+    EXPECT_EQ(*p3,30);
+    EXPECT_EQ(*p4,40);
+    EXPECT_EQ(*p5,50);
+    EXPECT_EQ(*p1,10);
+    EXPECT_EQ(*p2,20);
+}
