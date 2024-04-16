@@ -1,8 +1,10 @@
 #pragma once
-#include "Array.h"
+
+#include "Arry.h"
 
 template <typename T>
-typename Array<T>::iterator binarySearch(T value, typename Array<T>::iterator begin, typename Array<T>::iterator end) {
+typename Arry<T>::iterator binarySearch(T value, typename Arry<T>::iterator begin, typename Arry<T>::iterator end) 
+{
     auto start = begin;
     auto length = end - begin; 
 

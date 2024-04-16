@@ -24,7 +24,7 @@ private:
 public:
 	Assoc() {}
 
-	addPair(Key k, Data d) {
+	void addPair(Key k, Data d) {
 		node newNode;
 		newNode.key = k;
 		newNode.data = d;
@@ -33,7 +33,8 @@ public:
 	}
 
 	Data findByKey(Key k) {
-		Arry<node>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
+		typename Arry<typename Assoc<Key, Data>::node>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
+
 		if (res != m_storage.end()) {
 			return (*res).data;
 		}
