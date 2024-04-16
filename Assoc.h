@@ -16,7 +16,9 @@ private:
 	}
 
 public:
-	Assoc() {}
+	Assoc(){
+		m_storage=Arry<Para<Key, Data>>(0);
+	}
 
 	void addPair(Key k, Data d) {
 		Para<Key, Data> newNode;
