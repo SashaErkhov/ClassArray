@@ -8,8 +8,7 @@ template <typename T> class Arry{
 	T* m_bytes;
 	size_t size = 0;
 public:
-	Arry(size_t size=0) {
-	/*standart constructor with size*/
+	Arry(size_t size = 0) : size(size) {
 	    m_bytes = new T[size];
 	}
 	size_t getSize() const{ return size; }
@@ -89,12 +88,17 @@ public:
 			return *this;
 		}
 
-		iterator operator++(int)//постфиксная форма 
+		iterator operator++(int)
 		{
 			T* tmp = current;
 			++current;
 			return iterator(tmp);
 		}
+
+		int operator-(const iterator& other) const {
+			return current - other.current;
+		}
+
 		friend class Arry; 
 	};
 
@@ -102,8 +106,8 @@ public:
 	 	return iterator(m_bytes);
 	}
 
-	iterator end(){
-		return iterator(nullptr);
+	iterator end() {
+		return iterator(m_bytes + size);
 	}
 
     void insert(const iterator& pos, const T& value);
