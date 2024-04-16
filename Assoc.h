@@ -42,4 +42,37 @@ public:
 			throw std::runtime_error("Key not found");
 		}
 	}
+
+	class iterator {
+		typename Arry<Para<Key, Data>>::iterator current;
+	public:
+		iterator(typename Arry<Para<Key, Data>>::iterator p = nullptr) : current(p) {}
+
+		Para<Key, Data>& operator*() {
+			return *current;
+		}
+
+		const Para<Key, Data>& operator*() const {
+			return *current;
+		}
+
+		iterator& operator++() {
+			++current;
+			return *this;
+		}
+
+		iterator operator++(int) {
+			iterator tmp = *this;
+			++(*this);
+			return tmp;
+		}
+	};
+
+	iterator begin() {
+		return iterator(m_storage.begin());
+	}
+
+	iterator end() {
+		return iterator(m_storage.end());
+	}
 };
