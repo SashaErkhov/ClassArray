@@ -16,7 +16,7 @@ private:
 	}
 
 public:
-	Assoc(size_t len=0){
+	Assoc(){
 		m_storage=Arry<Para<Key, Data>>(0);
 	}
 
