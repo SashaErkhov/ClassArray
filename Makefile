@@ -15,5 +15,8 @@ listgtests: listgtests.cpp
 assocgtests: assocgtests.cpp
 	$(CC) assocgtests.cpp $(CFLAGS) $(LDFLAGS) -o $@
 
+paragtests: paragtests.cpp
+	$(CC) paragtests.cpp $(CFLAGS) $(LDFLAGS) -o $@
+
 clean:
 	rm -rf *.o listgtests arrygtests

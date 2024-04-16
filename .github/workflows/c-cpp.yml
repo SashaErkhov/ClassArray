@@ -30,5 +30,7 @@ jobs:
       run: ./listgtests
     - name: test of Assoc
       run: ./assocgtests
+    - name: test of Para
+      run: ./paragtests
     - name: make clean
       run: make clean
