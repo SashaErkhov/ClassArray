@@ -1,19 +1,13 @@
 #pragma once
 #include "Arry.h"
+#include "Para.h"
 
 template < class Key, class Data> class Assoc {
 private:
-	// Key - то , по чему находим, 
-	// Data - то, что находим
-	struct node {
-		Key key;
-		Data data;
-	};
-
-	Arry<node> m_storage;
+	Arry<Para<Key, Data>> m_storage;
 
 	// Finds and returns the insertion point for a key in the sorted array.
-	typename Arry<node>::iterator findInsertionPoint(const Key& key) {
+	typename Arry<Para<Key, Data>>::iterator findInsertionPoint(const Key& key) {
 		auto it = m_storage.begin();
 		while (it != m_storage.end() && it->key < key) {
 			++it;
@@ -25,23 +19,24 @@ public:
 	Assoc() {}
 
 	void addPair(Key k, Data d) {
-		node newNode;
+		Para<Key, Data> newNode;
 		newNode.key = k;
 		newNode.data = d;
-		auto pos = findInsertionPoint(k, m_storage);
+		auto pos = findInsertionPoint(k);
 		m_storage.insert(pos, newNode);
 	}
 
 	Data findByKey(Key k) {
-		typename Arry<typename Assoc<Key, Data>::node>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
+		typename Arry<Para<Key, Data>>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
 
 		if (res != m_storage.end()) {
-			return (*res).data;
+			return res->data;
 		}
 		else {
 			throw std::runtime_error("Key not found");
 		}
 	}
+
 
 	class iterator {
 		typename Arry<Para<Key, Data>>::iterator current;
