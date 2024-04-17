@@ -6,19 +6,19 @@
 
 template <typename T> class Arry{
 	T* m_bytes;
-	size_t size = 0;
+	size_t size;
 public:
 	Arry(size_t size = 0) : size(size) {
 	    m_bytes = new T[size];
 	}
 	size_t getSize() const{ return size; }
-	void addElement(T elem) {
+	void addElement( const T& elem) {
 	    T* new_bytes = new T[++size];
         for (size_t i = 0; i < (size-1); ++i) {
             new_bytes[i] = m_bytes[i];
         }
         new_bytes[size-1] = elem;
-        delete[] m_bytes;
+        if(size!=1) delete[] m_bytes;
         m_bytes = new_bytes;
 	}
 	void removeElement(size_t pos) {

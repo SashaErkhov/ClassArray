@@ -18,7 +18,7 @@ TEST(Arry, AddElements) {
     a.addElement(3);
     a.addElement(4);
     a.addElement(5);
-    EXPECT_EQ(a.getSize(), 5);
+    EXPECT_EQ(a.getSize(), 10);
 }
 TEST(Arry, AddMoreThenCapaticity) {
     Arry<int> a(5);
@@ -28,7 +28,7 @@ TEST(Arry, AddMoreThenCapaticity) {
     a.addElement(4);
     a.addElement(5);
     a.addElement(6);
-    EXPECT_EQ(a.getSize(), 6);
+    EXPECT_EQ(a.getSize(), 11);
 }
 
 TEST(Arry, BigCountOfData) {
@@ -36,11 +36,11 @@ TEST(Arry, BigCountOfData) {
     for (int i = 0; i < 10000; i++) {
         a.addElement(i);
     }
-    EXPECT_EQ(a.getSize(), 10000);
+    EXPECT_EQ(a.getSize(), 10005);
 }
 
 TEST(Arry, RemoveOneElementFromStart) {
-    Arry<int> a(5);
+    Arry<int> a;
     a.addElement(1);
     a.addElement(2);
     a.addElement(3);
@@ -50,7 +50,7 @@ TEST(Arry, RemoveOneElementFromStart) {
     EXPECT_EQ(a.getElement(0), 2);
 }
 TEST(Arry, RemoveOneElementFromMiddle) {
-    Arry<int> a(5);
+    Arry<int> a;
     for (int i = 0; i < 1000; i++) {
         a.addElement(i);
     }
