@@ -1,6 +1,7 @@
 #pragma once
 #include "Arry.h"
 #include "Para.h"
+#include "Containers.h"
 
 template < class Key, class Data> class Assoc {
 private:
@@ -16,8 +17,8 @@ private:
 	}
 
 public:
-	Assoc(){
-		m_storage=Arry<Para<Key, Data>>(0);
+	Assoc() {
+		m_storage = Arry<Para<Key, Data>>(0);
 	}
 
 	void addPair(Key k, Data d) {

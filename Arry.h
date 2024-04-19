@@ -95,8 +95,17 @@ public:
 			return iterator(tmp);
 		}
 
+		iterator operator+(int n) const {
+			return iterator(current + n);
+		}
+
+
 		int operator-(const iterator& other) const {
 			return current - other.current;
+		}
+
+		bool operator!=(const iterator& other) const {
+			return current != other.current;
 		}
 
 		friend class Arry; 
@@ -113,25 +122,29 @@ public:
     void insert(const iterator& pos, const T& value);
 };
 
-//TODO
 template<typename T>
-void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value)
-{
-	//Добавление элемента по итератору
-	T* new_bytes = new T[++size];
+void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value) {
+	T* new_bytes = new T[size + 1];
 	size_t i = 0;
-	while ((m_bytes + i) != (pos + 1))
-	{
+	iterator current = begin();
+
+	while (current != pos && current != end()) {
 		new_bytes[i] = m_bytes[i];
 		++i;
+		++current;
 	}
+
 	new_bytes[i++] = value;
-	for (size_t j = i; j < size; ++j)
-	{
-		new_bytes[j] = m_bytes[j - 1];
+
+	while (current != end()) {
+		new_bytes[i] = *current;
+		++i;
+		++current;
 	}
+
 	delete[] m_bytes;
 	m_bytes = new_bytes;
+	++size;
 }
 
 #endif // !ARRAY_OUR_WORK

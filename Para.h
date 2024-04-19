@@ -15,7 +15,7 @@ public:
     U second;
     Para(T f = T(), U s = U()) : first(f), second(s) {}
     Para(const Para& p) : first(p.first), second(p.second) {}
-    Para(Para&& p): first(std::move(p.first)), second(std::move(p.second)) {}
+    Para(Para&& p) : first(std::move(p.first)), second(std::move(p.second)) {}
     Para& operator=(const Para& p)
     {
         first = p.first;
@@ -32,6 +32,36 @@ public:
     {
         std::swap(p1.first, p2.first);
         std::swap(p1.second, p2.second);
+    }
+
+    bool operator==(const Para& rhs) const
+    {
+        return this->first == rhs.first;
+    }
+
+    bool operator<(const Para& rhs) const
+    {
+        return this->first < rhs.first;
+    }
+
+    bool operator!=(const Para& rhs) const
+    {
+        return !(*this == rhs);
+    }
+
+    bool operator>(const Para& rhs) const
+    {
+        return rhs < *this;
+    }
+
+    bool operator<=(const Para& rhs) const
+    {
+        return !(*this > rhs);
+    }
+
+    bool operator>=(const Para& rhs) const
+    {
+        return !(*this < rhs);
     }
 };
 
