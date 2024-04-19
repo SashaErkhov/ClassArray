@@ -9,7 +9,7 @@ private:
 	// Finds and returns the insertion point for a key in the sorted array.
 	typename Arry<Para<Key, Data>>::iterator findInsertionPoint(const Key& key) {
 		auto it = m_storage.begin();
-		while (it != m_storage.end() && it->key < key) {
+		while (it != m_storage.end() && (*it).first < key) {
 			++it;
 		}
 		return it;
@@ -22,8 +22,8 @@ public:
 
 	void addPair(Key k, Data d) {
 		Para<Key, Data> newNode;
-		newNode.key = k;
-		newNode.data = d;
+		newNode.first = k;
+		newNode.second = d;
 		auto pos = findInsertionPoint(k);
 		m_storage.insert(pos, newNode);
 	}
@@ -32,7 +32,7 @@ public:
 		typename Arry<Para<Key, Data>>::iterator res = binarySearch(k, m_storage.begin(), m_storage.end());
 
 		if (res != m_storage.end()) {
-			return res->data;
+			return (*res).second;
 		}
 		else {
 			throw std::runtime_error("Key not found");
