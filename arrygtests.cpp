@@ -57,3 +57,39 @@ TEST(Arry, RemoveOneElementFromMiddle) {
     a.removeElement(500);
     EXPECT_EQ(a.getElement(500), 501);
 }
+
+TEST(Arry, InsertToBegin){
+    Arry<int> a;
+    a.addElement(20);
+    a.insert(a.begin(),10);
+    EXPECT_EQ(a.getElement(0),10);
+}
+
+TEST(Arry,InsertToEnd){
+    Arry<int> a;
+    a.addElement(10);
+    a.insert(a.end(),20);
+    EXPECT_EQ(a.getElement(a.getSize()-1),20);
+}
+
+TEST(Arry,InsertToMiddle){
+    Arry<int> a;
+    a.addElement(10);
+    a.addElement(30);
+    a.insert(++a.begin(),20);
+    EXPECT_EQ(a.getElement(1),20);
+}
+
+TEST(Arry,InsertWithOne){
+    Arry<int> a;
+    a.addElement(10);
+    a.insert(a.begin(),20);
+    EXPECT_EQ(a.getElement(0),20);
+    EXPECT_EQ(a.getElement(1),10);
+}
+
+TEST(Arry,InsertToEmpty){
+    Arry<int> a;
+    a.insert(a.begin(),10);
+    EXPECT_EQ(a.getElement(0),10);
+}

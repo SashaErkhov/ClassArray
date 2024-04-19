@@ -123,28 +123,23 @@ public:
 };
 
 template<typename T>
-void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value) {
-	T* new_bytes = new T[size + 1];
+void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value)
+{
+	//Добавление элемента по итератору
+	T* new_bytes = new T[++size];
 	size_t i = 0;
-	iterator current = begin();
-
-	while (current != pos && current != end()) {
+	while ((m_bytes + i) != (pos.current))
+	{
 		new_bytes[i] = m_bytes[i];
 		++i;
-		++current;
 	}
-
 	new_bytes[i++] = value;
-
-	while (current != end()) {
-		new_bytes[i] = *current;
-		++i;
-		++current;
+	for (size_t j = i; j < size; ++j)
+	{
+		new_bytes[j] = m_bytes[j - 1];
 	}
-
 	delete[] m_bytes;
 	m_bytes = new_bytes;
-	++size;
 }
 
 #endif // !ARRAY_OUR_WORK
