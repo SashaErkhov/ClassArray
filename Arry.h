@@ -128,7 +128,7 @@ void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value)
 	//Добавление элемента по итератору
 	T* new_bytes = new T[++size];
 	size_t i = 0;
-	while ((m_bytes + i) != (pos.current))
+	while (((m_bytes + i) != (pos.current))and (i<(size-1)))
 	{
 		new_bytes[i] = m_bytes[i];
 		++i;
