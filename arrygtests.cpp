@@ -93,3 +93,9 @@ TEST(Arry,InsertToEmpty){
     a.insert(a.begin(),10);
     EXPECT_EQ(a.getElement(0),10);
 }
+
+TEST(Arry, InsertToBegin2){
+    Arry<int> a;
+    a.insert(a.begin(),10);
+    EXPECT_EQ(a.getElement(0),10);
+}

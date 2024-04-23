@@ -17,7 +17,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 
-add_executable(tests arrygtests.cpp listgtests.cpp assocgtests.cpp paragtests.cpp)
+add_executable(tests listgtests.cpp assocgtests.cpp paragtests.cpp arrygtests.cpp)
 target_link_libraries(tests GTest::gtest_main)
 
 include(GoogleTest)
