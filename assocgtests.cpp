@@ -38,7 +38,9 @@ TEST(BinarySearchTest, HandlesEmptyArray) {
 
 // Test searching in a single-element array
 TEST(BinarySearchTest, HandlesSingleElementArray) {
-    Arry<int> single = { 40 };
+    Arry<int> single;
+    single.addElement(40);
+
     auto it = binarySearch(40, single.begin(), single.end());
     EXPECT_NE(it, single.end());
     EXPECT_EQ(*it, 40);
