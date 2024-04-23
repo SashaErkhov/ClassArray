@@ -66,5 +66,60 @@ TEST(BinarySearchTest, TestBoundaries) {
 }
 
 // ----------------------------------------------------- Assoc tests
+TEST(Assoc,AddPairAndFind)
+{
+    Assoc<int,int> assoc;
+    assoc.addPair(1,10);
+    assoc.addPair(2,20);
+    assoc.addPair(3,30);
+    assoc.addPair(4,40);
+    assoc.addPair(5,50);
+    EXPECT_EQ(assoc.findByKey(1),10);
+    EXPECT_EQ(assoc.findByKey(2),20);
+    EXPECT_EQ(assoc.findByKey(3),30);
+    EXPECT_EQ(assoc.findByKey(4),40);
+    EXPECT_EQ(assoc.findByKey(5),50);
+}
 
+TEST(Assoc,NotStandartFindByKey)
+{
+    Assoc<int,int> assoc;
+    assoc.addPair(1,10);
+    assoc.addPair(2,20);
+    assoc.addPair(3,30);
+    assoc.addPair(4,40);
+    assoc.addPair(5,50);
+    EXPECT_ANY_THROW(assoc.findByKey(6));
+    EXPECT_ANY_THROW(assoc.findByKey('c'));
+    EXPECT_ANY_THROW(assoc.findByKey(0));
+}
+
+TEST(Assoc,forIterator)
+{
+    Assoc<int,int> assoc;
+    assoc.addPair(1,10);
+    assoc.addPair(2,20);
+    assoc.addPair(3,30);
+    assoc.addPair(4,40);
+    assoc.addPair(5,50);
+    int a[5]={10,20,30,40,50};
+    int b[5]={1,2,3,4,5};
+    auto p=assoc.begin();
+    for(int i=0; i<5; ++i)
+    {
+        EXPECT_EQ((*p).first,a[i]);
+        EXPECT_EQ((*p).second,b[i]);
+    }
+}
+
+TEST(Assoc,size)
+{
+    Assoc<int,int> assoc;
+    assoc.addPair(1,10);
+    assoc.addPair(2,20);
+    assoc.addPair(3,30);
+    assoc.addPair(4,40);
+    assoc.addPair(5,50);
+    EXPECT_EQ(assoc.getSize(),5);
+}
 // ...
