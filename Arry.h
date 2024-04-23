@@ -108,6 +108,14 @@ public:
 			return current != other.current;
 		}
 
+		bool operator==(const iterator& other) const {
+			return current == other.current;
+		}
+
+		bool operator<(const T& other) const {
+			return *current < other;
+		}
+
 		friend class Arry; 
 	};
 
