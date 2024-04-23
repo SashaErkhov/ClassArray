@@ -2,8 +2,8 @@
 
 #include "Arry.h"
 
-template <typename T>
-typename Arry<T>::iterator binarySearch(T value, typename Arry<T>::iterator begin, typename Arry<T>::iterator end) 
+template <typename T, typename It>
+It binarySearch(T value, It begin, It end) 
 {
     auto start = begin;
     auto length = end - begin; 
