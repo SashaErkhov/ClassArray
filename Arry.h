@@ -68,7 +68,10 @@ public:
 	}
 	~Arry()
 	{
-		delete[] m_bytes;
+		if (size != 0)
+		{
+			delete[] m_bytes;
+		}
 	}
 	const T& operator[](size_t pos)const { return m_bytes[pos]; }
 	T& operator[](size_t pos) { return m_bytes[pos]; }
@@ -133,20 +136,29 @@ public:
 template<typename T>
 void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value)
 {
-	T* new_bytes = new T[++size];
+	T* new_bytes = new T[size + 1]; // Allocate new array with incremented size
 	size_t i = 0;
-	while (((m_bytes + i) != (pos.current))and (i<(size-1)))
-	{
+
+	// Copy elements until the insertion point
+	while ((m_bytes + i) != pos.current && i < size) {
 		new_bytes[i] = m_bytes[i];
 		++i;
 	}
-	new_bytes[i++] = value;
-	for (size_t j = i; j < size; ++j)
-	{
-		new_bytes[j] = m_bytes[j - 1];
+
+	// Insert the new element
+	new_bytes[i] = value;
+
+	// Copy remaining elements
+	for (size_t j = i; j < size; ++j) {
+		new_bytes[j + 1] = m_bytes[j];
 	}
-	delete[] m_bytes;
+
+	// Delete old array and update pointer and size
+	if (size != 0) {
+		delete[] m_bytes;
+	}
 	m_bytes = new_bytes;
+	size++; // Only increment size after all operations are done
 }
 
 #endif // !ARRAY_OUR_WORK

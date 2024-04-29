@@ -66,6 +66,7 @@ TEST(BinarySearchTest, TestBoundaries) {
 }
 
 // ----------------------------------------------------- Assoc tests
+
 TEST(Assoc,AddPairAndFind)
 {
     Assoc<int,int> assoc;
@@ -107,8 +108,9 @@ TEST(Assoc,forIterator)
     auto p=assoc.begin();
     for(int i=0; i<5; ++i)
     {
-        EXPECT_EQ((*p).first,a[i]);
-        EXPECT_EQ((*p).second,b[i]);
+        EXPECT_EQ((*p).first,b[i]);
+        EXPECT_EQ((*p).second,a[i]);
+        p++;
     }
 }
 
@@ -122,4 +124,3 @@ TEST(Assoc,size)
     assoc.addPair(5,50);
     EXPECT_EQ(assoc.getSize(),5);
 }
-// ...
