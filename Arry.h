@@ -9,7 +9,13 @@ template <typename T> class Arry {
 	size_t size;
 public:
 	Arry(size_t size = 0) : size(size) {
-		m_bytes = new T[size];
+		if (size != 0)
+		{
+			m_bytes = new T[size];
+		}
+		else {
+			m_bytes = nullptr;
+		}
 	}
 	size_t getSize() const { return size; }
 	void addElement(const T& elem) {
@@ -18,7 +24,7 @@ public:
 			new_bytes[i] = m_bytes[i];
 		}
 		new_bytes[size - 1] = elem;
-		if (size != 1) delete[] m_bytes;
+		delete[] m_bytes;
 		m_bytes = new_bytes;
 	}
 	void removeElement(size_t pos) {
@@ -68,10 +74,7 @@ public:
 	}
 	~Arry()
 	{
-		if (size != 0)
-		{
-			delete[] m_bytes;
-		}
+		delete[] m_bytes;
 	}
 	const T& operator[](size_t pos)const { return m_bytes[pos]; }
 	T& operator[](size_t pos) { return m_bytes[pos]; }
@@ -154,9 +157,8 @@ void Arry<T>::insert(const typename Arry<T>::iterator& pos, const T& value)
 	}
 
 	// Delete old array and update pointer and size
-	if (size != 0) {
-		delete[] m_bytes;
-	}
+	delete[] m_bytes;
+
 	m_bytes = new_bytes;
 	size++; // Only increment size after all operations are done
 }
