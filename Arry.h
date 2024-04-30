@@ -38,7 +38,7 @@ public:
 	}
 	void setElement(size_t pos, T value) {
 		if (pos > size - 1) {
-			std::cout << "position is out of range" << std::endl;
+			throw std::out_of_range("Position " + std::to_string(pos) + " is out of range. Maximum allowed index is " + std::to_string(size - 1) + ".");
 		}
 		else {
 			m_bytes[pos] = value;
