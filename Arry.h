@@ -7,6 +7,10 @@
 template <typename T> class Arry {
 	T* m_bytes;
 	size_t size;
+	void swap(Arry& other){
+		std::swap(m_bytes, other.m_bytes);
+		std::swap(size, other.size);
+	}
 public:
 	Arry(size_t size = 0) : size(size) {
 		if (size != 0)
@@ -16,6 +20,33 @@ public:
 		else {
 			m_bytes = nullptr;
 		}
+	}
+	Arry(const Arry& other){
+		size = other.size;
+		m_bytes = new T[size];
+		for(size_t i=0; i<size; ++i){
+			m_bytes[i] = other.m_bytes[i];
+		}
+	}
+	Arry(Arry&& other){
+		size=0;
+		m_bytes=nullptr;
+		swap(other);
+	}
+	Arry& operator=(Arry&& other){
+		if (this != &other){
+			Arry<T> tmp(other);
+			swap(tmp);
+		}
+		return *this;
+	}
+
+	Arry& operator=(const Arry& other){
+		if (this != &other){
+			Arry<T> tmp(other);
+			swap(tmp);
+		}
+		return *this;
 	}
 	size_t getSize() const { return size; }
 	void addElement(const T& elem) {
