@@ -125,11 +125,11 @@ TEST(Arry, Move){
     a.addElement(6);
     Arry<int> b(std::move(a));
     EXPECT_EQ(b.getSize(),5);
-    EXPECT_EQ(b.getElement(),1);
-    EXPECT_EQ(b.getElement(),2);
-    EXPECT_EQ(b.getElement(),3);
-    EXPECT_EQ(b.getElement(),4);
-    EXPECT_EQ(b.getElement(),5);
+    EXPECT_EQ(b.getElement(0),1);
+    EXPECT_EQ(b.getElement(1),2);
+    EXPECT_EQ(b.getElement(2),3);
+    EXPECT_EQ(b.getElement(3),4);
+    EXPECT_EQ(b.getElement(4),5);
 }
 
 TEST(Arry, Equal_copy){
@@ -157,9 +157,9 @@ TEST(Arry, Equal_move){
     a.addElement(6);
     Arry<int> b=std::move(a);
     EXPECT_EQ(b.getSize(),5);
-    EXPECT_EQ(b.getElement(),1);
-    EXPECT_EQ(b.getElement(),2);
-    EXPECT_EQ(b.getElement(),3);
-    EXPECT_EQ(b.getElement(),4);
-    EXPECT_EQ(b.getElement(),5);
+    EXPECT_EQ(b.getElement(0),1);
+    EXPECT_EQ(b.getElement(1),2);
+    EXPECT_EQ(b.getElement(2),3);
+    EXPECT_EQ(b.getElement(3),4);
+    EXPECT_EQ(b.getElement(4),5);
 }
