@@ -130,6 +130,7 @@ TEST(Arry, Move){
     EXPECT_EQ(b.getElement(2),3);
     EXPECT_EQ(b.getElement(3),4);
     EXPECT_EQ(b.getElement(4),5);
+    EXPECT_EQ(a.getSize(),0);
 }
 
 TEST(Arry, Equal_copy){
@@ -162,4 +163,5 @@ TEST(Arry, Equal_move){
     EXPECT_EQ(b.getElement(2),3);
     EXPECT_EQ(b.getElement(3),4);
     EXPECT_EQ(b.getElement(4),5);
+    EXPECT_EQ(a.getSize(),0);
 }
