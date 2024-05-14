@@ -37,7 +37,7 @@ public:
 		if (this != &other){
 			size=0;
 			m_bytes=nullptr;
-			swap(tmp);
+			swap(other);
 		}
 		return *this;
 	}
