@@ -101,7 +101,7 @@ TEST(Arry, InsertToBegin2){
 }
 
 TEST(Arry, Copy){
-    Arry<int> a(5);
+    Arry<int> a(0);
     a.addElement(1);
     a.addElement(2);
     a.addElement(3);
@@ -116,7 +116,7 @@ TEST(Arry, Copy){
 }
 
 TEST(Arry, Move){
-    Arry<int> a(5);
+    Arry<int> a(0);
     a.addElement(1);
     a.addElement(2);
     a.addElement(3);
@@ -133,7 +133,7 @@ TEST(Arry, Move){
 }
 
 TEST(Arry, Equal_copy){
-    Arry<int> a(5);
+    Arry<int> a(0);
     a.addElement(1);
     a.addElement(2);
     a.addElement(3);
@@ -148,7 +148,7 @@ TEST(Arry, Equal_copy){
 }
 
 TEST(Arry, Equal_move){
-    Arry<int> a(5);
+    Arry<int> a(0);
     a.addElement(1);
     a.addElement(2);
     a.addElement(3);

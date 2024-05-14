@@ -35,7 +35,8 @@ public:
 	}
 	Arry& operator=(Arry&& other){
 		if (this != &other){
-			Arry<T> tmp(other);
+			size=0;
+			m_bytes=nullptr;
 			swap(tmp);
 		}
 		return *this;
