@@ -35,6 +35,59 @@ TEST(ListTest, RemoveElementList) {
     a.removeElement(0);
     EXPECT_EQ(0, a.getSize());
 }
+TEST(ListTest, RemoveFromEmptyList) {
+    List<int> list;
+    EXPECT_THROW(list.remove(list.begin()), std::runtime_error);
+}
+
+TEST(ListTest, RemoveSingleElement) {
+    List<int> list;
+    list.insert(list.begin(), 10);
+    list.remove(list.begin());
+    EXPECT_EQ(list.begin(), list.end());
+}
+
+TEST(ListTest, RemoveFirstElement) {
+    List<int> list;
+    list.insert(list.begin(), 10);
+    list.insert(list.begin(), 20);
+    list.remove(list.begin());
+    EXPECT_EQ(*list.begin(), 10);
+}
+
+TEST(ListTest, RemoveLastElement) {
+    List<int> list;
+    list.insert(list.begin(), 10);
+    list.insert(list.begin(), 20);
+    list.remove(++list.begin());
+    EXPECT_EQ(*list.begin(), 20);
+}
+
+TEST(ListTest, RemoveMiddleElement) {
+    List<int> list;
+    list.insert(list.begin(), 10);
+    list.insert(list.begin(), 20);
+    list.insert(list.begin(), 30);
+    auto it = list.begin();
+    ++it;  // указывает на 20
+    list.remove(it);
+    EXPECT_EQ(*list.begin(), 30);
+    EXPECT_EQ(*(++list.begin()), 10);
+}
+
+TEST(ListTest, RemoveInvalidIterator) {
+    List<int> list;
+    list.insert(list.begin(), 10);
+    list.insert(list.begin(), 20);
+    List<int>::iterator invalid(nullptr);
+    EXPECT_THROW(list.remove(invalid), std::runtime_error);
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
 
 TEST(ListTest, RemoveOneElementFromStartList) {
     List<int> a;
