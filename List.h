@@ -63,6 +63,7 @@ public:
     iterator begin() const { return iterator(beg_); }
     iterator end() const { return iterator(nullptr); }
     void insert(const iterator& pos, const T& value);
+    void remove(const iterator& pos);
     iterator addElement(const T& elem);
     iterator addElement(T&& elem);
 };
@@ -100,7 +101,44 @@ void List<T>::insert(const iterator& pos, const T& value)
 
     ++size_;
 }
+template<typename T>
+void List<T>::remove(const iterator& pos)
+{
+    if (beg_ == nullptr) {
+        throw std::runtime_error("Cannot remove from an empty list");
+    }
 
+    if (pos.current == beg_) {
+        // Remove the first node
+        node* temp = beg_;
+        beg_ = beg_->next__;
+        if (beg_ != nullptr) {
+            beg_->prev__ = nullptr;
+        } else {
+            end_ = nullptr; // List is now empty
+        }
+    } else {
+        // Remove a middle or end node
+        node* current = beg_;
+        while (current != nullptr && current->next__ != pos.current) {
+            current = current->next__;
+        }
+
+        if (current == nullptr || current->next__ == nullptr) {
+            throw std::runtime_error("Iterator does not point to a valid node");
+        }
+
+        node* temp = current->next__;
+        current->next__ = temp->next__;
+        if (temp->next__ != nullptr) {
+            temp->next__->prev__ = current;
+        } else {
+            end_ = current; // Removed the last node
+        }
+    }
+
+    --size_;
+}
 template<typename T>
 List<T>::List(const List& other){
     if (other.size_ == 0) {
